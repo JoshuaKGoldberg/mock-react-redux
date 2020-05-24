@@ -24,7 +24,7 @@
     "typescript": "^3.9.3"
   },
   "main": "src/index.js",
-  "homepage": "https://github.com/typescript-eslint/mock-redux#readme",
+  "homepage": "https://github.com/Codecademy/mock-redux#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
