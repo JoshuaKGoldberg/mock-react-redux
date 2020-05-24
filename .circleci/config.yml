@@ -14,7 +14,7 @@ jobs:
           keys:
             - dependency-cache-1-{{ checksum "yarn.lock" }}
 
-      - run: yarn
+      - run: yarn install --frozen-lockfile --no-progress
 
       - save_cache:
           paths:
