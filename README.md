@@ -58,7 +58,7 @@ See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/
 const { dispatch } = mockRedux();
 ```
 
-The `dispatch` function provided by [`useDispatch`](https://react-redux.js.org/api/hooks#usedispatch) will be a `jest.fn()` spy.
+The `dispatch` function returned by [`useDispatch`](https://react-redux.js.org/api/hooks#usedispatch) will be replaced by a `jest.fn()` spy.
 You can then assert against it as with any Jest mock in your unit tests:
 
 ```tsx
@@ -75,6 +75,8 @@ See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./doc
 
 ## Gotchas
 
+- Only named selector functions directly passed to `useSelector` are supported.
+  - See [#6](https://github.com/Codecademy/mock-redux/issues/6) for discussion on allowing inline lambdas such as `useSelector(state => state.value)`.
 - If a selector is passed to `useSelector` without having a `.give` or `.giveMock` previuosly declared for it, `mock-redux` will throw an error.
 - The first `mock-redux` import _must_ come before the first `react-redux` import in your test files.
 
