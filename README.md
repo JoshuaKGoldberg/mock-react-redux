@@ -40,7 +40,7 @@ These work similarly to Jest mocks: `.give` takes in the return value that will 
 
 ```tsx
 it("displays the title when there is a title", () => {
-  mockRedux().give(selectTicle, "Hooray!");
+  mockRedux().give(selectTitle, "Hooray!");
 
   const view = render(<Results />);
 
