@@ -115,6 +115,7 @@ workflows:
           requires:
             - build
       - publish:
+          context: org-global
           filters:
             branches:
               only: master
