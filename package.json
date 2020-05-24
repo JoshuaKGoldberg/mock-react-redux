@@ -60,7 +60,7 @@
     "tsc": "tsc"
   },
   "types": "src/index.d.ts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "@types/react": "^16.9.35",
     "@types/react-redux": "^7.1.9"
