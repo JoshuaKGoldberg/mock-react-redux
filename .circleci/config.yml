@@ -14,7 +14,7 @@ jobs:
           keys:
             - dependency-cache-1-{{ checksum "yarn.lock" }}
 
-      - run: npm install
+      - run: yarn
 
       - save_cache:
           paths:
@@ -41,7 +41,7 @@ jobs:
       - attach_workspace:
           at: "."
 
-      - run: npm run eslint
+      - run: yarn run eslint
 
   publish:
     docker:
@@ -71,7 +71,7 @@ jobs:
       - attach_workspace:
           at: "."
 
-      - run: npm run prettier
+      - run: yarn run prettier
 
   test:
     docker:
@@ -85,7 +85,7 @@ jobs:
       - attach_workspace:
           at: "."
 
-      - run: npm run test:ci
+      - run: yarn run test:ci
 
   tsc:
     docker:
@@ -99,7 +99,7 @@ jobs:
       - attach_workspace:
           at: "."
 
-      - run: npm run tsc
+      - run: yarn run tsc
 
       - persist_to_workspace:
           root: "."

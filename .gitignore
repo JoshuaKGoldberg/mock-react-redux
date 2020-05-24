@@ -3,3 +3,5 @@ node_modules/
 **/*.js.map
 **/*.d.ts
 !*.config.js
+!.eslintrc.js
+!docs/examples/types.d.ts
