@@ -7,7 +7,8 @@
 [![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 ![TypeScript: Strict](https://img.shields.io/badge/typescript-strict-brightgreen.svg)
 [![NPM version](https://badge.fury.io/js/mock-redux.svg)](http://badge.fury.io/js/mock-redux)
-[![Circle CI](https://img.shields.io/circleci/build/github/Codecademy/mock-redux.svg)](https://circleci.com/gh/Codecademy/mock-redux) [![Join the chat at https://gitter.im/Codecademy/mock-redux](https://badges.gitter.im/Codecademy/mock-redux.svg)](https://gitter.im/Codecademy/mock-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Circle CI](https://img.shields.io/circleci/build/github/Codecademy/mock-redux.svg)](https://circleci.com/gh/Codecademy/mock-redux)
+[![Join the chat at https://gitter.im/Codecademy/mock-redux](https://badges.gitter.im/Codecademy/mock-redux.svg)](https://gitter.im/Codecademy/mock-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Mocks out Redux action and selector hooks for clean Jest unit tests.
 
