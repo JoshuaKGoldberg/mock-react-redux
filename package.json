@@ -1,0 +1,68 @@
+{
+  "author": "Codecademy",
+  "description": "Mocks out Redux action and selector hooks for clean Jest unit tests.",
+  "devDependencies": {
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
+    "@testing-library/react": "^10.0.4",
+    "@types/jest": "^25.2.3",
+    "@types/redux-mock-store": "^1.0.2",
+    "@types/testing-library__react": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "3.0.0",
+    "@typescript-eslint/parser": "^3.0.0",
+    "babel-jest": "^26.0.1",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.6",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "typescript": "^3.9.3"
+  },
+  "main": "src/index.js",
+  "homepage": "https://github.com/typescript-eslint/mock-redux#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "keywords": [
+    "mock",
+    "redux",
+    "jest",
+    "tests",
+    "spies",
+    "dispatch",
+    "selectors",
+    "hooks"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "**/*.{js,json,ts,xml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "name": "mock-redux",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/mock-redux.git"
+  },
+  "scripts": {
+    "eslint": "eslint \"./src/*.ts\" \"./src/**/*.ts\" --report-unused-disable-directives",
+    "prettier": "prettier \"./*.{json,ts,yaml}\" \"./src/**/*.{json,ts,yaml}\"",
+    "prettier:write": "npm run prettier -- --write",
+    "test": "jest",
+    "test:ci": "jest --maxWorkers=2",
+    "tsc": "tsc"
+  },
+  "types": "src/index.d.ts",
+  "version": "0.1.0",
+  "dependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-redux": "^7.1.9"
+  }
+}

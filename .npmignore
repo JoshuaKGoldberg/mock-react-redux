@@ -1,0 +1,3 @@
+docs/
+src/**/*.ts
+!src/**/*.d.ts
