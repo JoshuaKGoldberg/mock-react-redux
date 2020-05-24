@@ -48,21 +48,7 @@ it("displays the title when there is a title", () => {
 });
 ```
 
-If you'd like more control over the return values, use `.giveMock` to provide a Jest mock:
-
-```tsx
-it("displays a message when the clear title button is clicked", () => {
-  mockRedux().giveMock(selectResult, jest.fn().mockReturnValueOnce("First!"));
-
-  const view = render(<Results />);
-
-  act(() => {
-    fireEvent.click(view.getByLabelText("Clear Title"));
-  });
-
-  view.getByText("No more title.");
-});
-```
+If you'd like more control over the return values, you can use `.giveMock` to provide a [Jest mock](https://jestjs.io/docs/en/mock-functions.html).
 
 See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/examples/Heading/Heading.test.tsx) for a code example.
 
