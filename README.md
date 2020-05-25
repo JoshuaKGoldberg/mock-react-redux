@@ -10,9 +10,9 @@
 [![Circle CI](https://img.shields.io/circleci/build/github/Codecademy/mock-redux.svg)](https://circleci.com/gh/Codecademy/mock-redux)
 [![Join the chat at https://gitter.im/Codecademy/mock-redux](https://badges.gitter.im/Codecademy/mock-redux.svg)](https://gitter.im/Codecademy/mock-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Mocks out Redux action and selector hooks for clean Jest unit tests.
+Mocks out Redux actions and selectors for clean React unit tests in Jest.
 
-Use this package if you'd like your React compnent unit tests to not take dependencies on your Redux states.
+Use this package if you'd like your React compnent unit tests to not take dependencies on your full Redux states.
 Separating your unit tests in this way can be particularly useful if your Redux state is complex and/or shared across components.
 
 ## Usage
@@ -24,10 +24,32 @@ import { mockRedux } from "mock-redux";
 `mock-redux` stubs out the [two common Redux hooks](https://react-redux.js.org/api/hooks) used with functional React components.
 Call `mockRedux()` before your render/mount logic in each unit test.
 
-> Only function components that call `useDispatch` and/or `useSelector` are supported for now.
-> See [#8](https://github.com/Codecademy/mock-redux/issues/8) for `connect()` support.
+### Mocking State
 
-### `useSelector`
+```tsx
+mockRedux().state({
+  /* ... */
+});
+```
+
+Sets a root state to be passed to your component's selectors.
+
+```tsx
+it("displays the title when there is a title", () => {
+  mockRedux().state({
+    title: "Hooray!",
+  });
+
+  // state => state.title
+  const view = render(<RendersTitle />);
+
+  view.getByText("Hooray!");
+});
+```
+
+See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/examples/Heading.test.tsx) for a code example.
+
+### Mocking Selectors
 
 ```tsx
 mockRedux()
@@ -42,7 +64,8 @@ These work similarly to Jest mocks: `.give` takes in the return value that will 
 it("displays the title when there is a title", () => {
   mockRedux().give(selectTitle, "Hooray!");
 
-  const view = render(<Results />);
+  // state => state.title
+  const view = render(<RendersTitle />);
 
   view.getByText("Hooray!");
 });
@@ -50,9 +73,9 @@ it("displays the title when there is a title", () => {
 
 If you'd like more control over the return values, you can use `.giveMock` to provide a [Jest mock](https://jestjs.io/docs/en/mock-functions.html).
 
-See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/examples/Heading/Heading.test.tsx) for a code example.
+See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/examples/Heading.test.tsx) for a code example.
 
-### `useDispatch`
+### Dispatch Spies
 
 ```tsx
 const { dispatch } = mockRedux();
@@ -65,13 +88,14 @@ You can then assert against it as with any Jest mock in your unit tests:
 it("dispatches the pageLoaded action when rendered", () => {
   const { dispatch } = mockRedux();
 
-  render(<MyComponent />);
+  // dispatch(pageLoaded())
+  render(<DispatchesPageLoaded />);
 
   expect(dispatch).toHaveBeenCalledWith(pageLoaded());
 });
 ```
 
-See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./docs/examples/Clicker/Clicker.test.tsx) for a code example.
+See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./docs/examples/Clicker.test.tsx) for a code example.
 
 ## Gotchas
 

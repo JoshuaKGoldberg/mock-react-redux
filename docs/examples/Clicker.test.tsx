@@ -3,7 +3,9 @@ import { mockRedux } from "mock-redux";
 import * as React from "react";
 import { useDispatch } from "react-redux";
 
-import { markClicked } from "./redux";
+const MARK_CLICKED = "MARK_CLICKED";
+
+const markClicked = () => ({ type: MARK_CLICKED });
 
 const Clicker = () => {
   const dispatch = useDispatch();

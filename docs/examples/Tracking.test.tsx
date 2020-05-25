@@ -3,7 +3,15 @@ import { mockRedux } from "mock-redux";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { markClicked, selectClicks } from "./redux";
+type RootState = {
+  clicks: number;
+};
+
+const MARK_CLICKED = "MARK_CLICKED";
+
+const markClicked = () => ({ type: MARK_CLICKED });
+
+const selectClicks = (state: RootState) => state.clicks;
 
 const Tracking = () => {
   const clicks = useSelector(selectClicks);
@@ -26,7 +34,7 @@ describe(Tracking, () => {
   });
 
   it("renders a plural message when it has been clicked 2 times", () => {
-    mockRedux().give(selectClicks, 2);
+    mockRedux().state({ clicks: 2 });
 
     const view = render(<Tracking />);
 
