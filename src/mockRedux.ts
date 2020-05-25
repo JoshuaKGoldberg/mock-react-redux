@@ -43,26 +43,26 @@ export const mockRedux = <State>(): MockRedux<State> => {
     );
   }
 
-  const currentMockState: MockSituation = (mockSituation = {
+  const currentMockSituation: MockSituation = (mockSituation = {
     dispatch: jest.fn(),
-    getSelector: createGetSelector(() => currentMockState.state),
+    getSelector: createGetSelector(() => currentMockSituation.state),
   });
 
   const mockRedux: MockRedux<State> = {
-    dispatch: currentMockState.dispatch,
+    dispatch: currentMockSituation.dispatch,
 
     give: (selector, returnValue) => {
-      currentMockState.getSelector(selector).setMock(jest.fn().mockReturnValue(returnValue));
+      currentMockSituation.getSelector(selector).setMock(jest.fn().mockReturnValue(returnValue));
       return mockRedux;
     },
 
     giveMock: (selector, mock) => {
-      currentMockState.getSelector(selector).setMock(mock);
+      currentMockSituation.getSelector(selector).setMock(mock);
       return mockRedux;
     },
 
     state: (newState) => {
-      currentMockState.state = newState;
+      currentMockSituation.state = newState;
       return mockRedux;
     },
   };
