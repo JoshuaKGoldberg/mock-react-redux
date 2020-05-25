@@ -67,7 +67,7 @@ mockRedux().state({
 <Heading />;
 ```
 
-`.state` takes in a single parameter and can only be called once:
+`.state` takes in a single parameter and can only be called once per unit test:
 
 - `state`: A value to use as the root Redux state for the duration of the unit test
 
