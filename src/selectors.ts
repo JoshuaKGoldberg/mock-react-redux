@@ -1,9 +1,15 @@
-import { SelectorRecord } from "./record";
 import { AnySelector } from "./types";
 
 export type GetSelector = <ReturnValue>(
   selector: AnySelector<ReturnValue>,
 ) => SelectorRecord<ReturnValue>;
+
+export type SelectorRecord<ReturnValue = any> = {
+  mock?: jest.Mock<ReturnValue>;
+  provide: (...args: any[]) => ReturnValue;
+  selector: AnySelector<ReturnValue>;
+  setMock: (mock: jest.Mock<ReturnValue>) => void;
+};
 
 export const createGetSelector = (getState: () => any): GetSelector => {
   const selectors = new Map<AnySelector, SelectorRecord>();
