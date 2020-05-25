@@ -12,7 +12,7 @@ let mockSituation: MockSituation | undefined;
 
 const mockStateError = (name: string) => {
   throw new Error(
-    `You included mock-redux but didn't call mockRedux() before calling ${name} from react-redux.`,
+    `You imported mock-redux but didn't call mockRedux() before calling ${name} from react-redux.`,
   );
 };
 
@@ -28,13 +28,13 @@ jest.mock("react-redux", () => {
     connect: mockConnect(getDispatch, () => {
       if (!mockSituation) {
         throw new Error(
-          "You included mock-redux but didn't call mockRedux() before rendering a connect() component.",
+          "You imported mock-redux but didn't call mockRedux() before rendering a connect() component.",
         );
       }
 
       if (!mockSituation.state) {
         throw new Error(
-          "You included mock-redux but didn't set state before rendering a connect() component.",
+          "You imported mock-redux but didn't set state before rendering a connect() component.",
         );
       }
 

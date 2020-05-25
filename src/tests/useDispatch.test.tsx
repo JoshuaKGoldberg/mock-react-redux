@@ -19,7 +19,7 @@ const Tester = () => {
 describe("useDispatch", () => {
   it("throws an error when mockRedux was not previously called", () => {
     expect(useDispatch).toThrowError(
-      `You included mock-redux but didn't call mockRedux() before calling useDispatch from react-redux.`,
+      `You imported mock-redux but didn't call mockRedux() before calling useDispatch from react-redux.`,
     );
   });
 

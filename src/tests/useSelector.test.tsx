@@ -10,7 +10,7 @@ const selectTestValue = (state: TestState) => state.value;
 describe("useSelector", () => {
   it("throws an error when mockRedux was not previously called", () => {
     expect(() => useSelector(selectTestValue)).toThrowError(
-      `You included mock-redux but didn't call mockRedux() before calling useSelector from react-redux.`,
+      `You imported mock-redux but didn't call mockRedux() before calling useSelector from react-redux.`,
     );
   });
 

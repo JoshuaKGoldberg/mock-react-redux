@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
 import { mockRedux } from "mock-redux";
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import { act } from "react-dom/test-utils";
+import { connect } from "react-redux";
 
 const value = "Hi!";
 const payload = { value };
@@ -35,7 +35,7 @@ describe("connect", () => {
       mockRedux();
 
       expect(() => ConnectedRendersValue({})).toThrowError(
-        "You included mock-redux but didn't set state before rendering a connect() component.",
+        "You imported mock-redux but didn't set state before rendering a connect() component.",
       );
     });
 
@@ -64,7 +64,7 @@ describe("connect", () => {
       const ConnectedFiresAction = connect(null, { action })(FiresAction);
 
       expect(() => ConnectedFiresAction({})).toThrowError(
-        "You included mock-redux but didn't call mockRedux() before calling useDispatch from react-redux.",
+        "You imported mock-redux but didn't call mockRedux() before calling useDispatch from react-redux.",
       );
     });
 

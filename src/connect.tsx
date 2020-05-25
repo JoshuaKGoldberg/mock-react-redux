@@ -1,6 +1,6 @@
+import mapValues from "lodash.mapvalues";
 import * as React from "react";
 import type { MapStateToProps, MapDispatchToProps } from "react-redux";
-import mapValues from "lodash.mapvalues";
 
 type AnyAction = (payload: any) => void;
 
