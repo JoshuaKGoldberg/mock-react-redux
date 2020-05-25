@@ -1,12 +1,13 @@
 import { createGetSelector, GetSelector } from "./selectors";
 import { MockRedux, AnySelector } from "./types";
 
-type MockState = {
+type MockSituation = {
   dispatch: jest.Mock;
   getSelector: GetSelector;
+  state?: unknown;
 };
 
-let mockState: MockState | undefined;
+let mockSituation: MockSituation | undefined;
 
 const mockNotImplemented = (name: string) => () => {
   throw new Error(`${name} is not supported when using mock-redux.`);
@@ -22,30 +23,32 @@ jest.mock("react-redux", () => {
   return {
     connect: mockNotImplemented("connect"),
     Provider: mockNotImplemented("Provider"),
-    useDispatch: () => mockState?.dispatch ?? mockStateError("useDispatch"),
+    useDispatch: () => mockSituation?.dispatch ?? mockStateError("useDispatch"),
     useSelector: (selector: AnySelector) => {
-      return mockState ? mockState.getSelector(selector).provide() : mockStateError("useSelector");
+      return mockSituation
+        ? mockSituation.getSelector(selector).provide()
+        : mockStateError("useSelector");
     },
   };
 });
 
 afterEach(() => {
-  mockState = undefined;
+  mockSituation = undefined;
 });
 
-export const mockRedux = () => {
+export const mockRedux = <State>(): MockRedux<State> => {
   if (require.cache[require.resolve("react-redux")]) {
     throw new Error(
       "It looks like you imported react-redux before mock-redux. Put mock-redux before react-redux or any imports that include react-redux.",
     );
   }
 
-  const currentMockState = (mockState = {
+  const currentMockState: MockSituation = (mockSituation = {
     dispatch: jest.fn(),
-    getSelector: createGetSelector(),
+    getSelector: createGetSelector(() => currentMockState.state),
   });
 
-  const mockRedux: MockRedux = {
+  const mockRedux: MockRedux<State> = {
     dispatch: currentMockState.dispatch,
 
     give: (selector, returnValue) => {
@@ -55,6 +58,11 @@ export const mockRedux = () => {
 
     giveMock: (selector, mock) => {
       currentMockState.getSelector(selector).setMock(mock);
+      return mockRedux;
+    },
+
+    state: (newState) => {
+      currentMockState.state = newState;
       return mockRedux;
     },
   };

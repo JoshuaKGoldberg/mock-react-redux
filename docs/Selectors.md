@@ -48,7 +48,37 @@ You're also relying a bunch of Redux state in order to test your React view.
 It can be useful to separate view and state logic in tests: especially when state is shared across many places.
 
 Instead, `mock-redux` can _completely replace_ any Redux interactions.
-It'll instead directly return whatever you need from the `useSelector` call:
+You have two options:
+
+- Providing a mocked Redux state for your unit test
+- Directly using predefined return values or mock functions for individual selectors
+
+## Mocking State
+
+You can set mock Redux state for the duration of a unit test.
+That state will be provided to selectors called by `useSelector`.
+
+```tsx
+mockRedux.state({
+  title: "Test Title",
+});
+
+// Renders <h1>Test Title</h1>
+<Heading />;
+```
+
+## Mocking Selectors
+
+### `give`
+
+If your component only uses `useSelector` and directly passes predefined selector functions to it,
+you can completely remove its dependency on Redux state with `.give`.
+It takes two parameters:
+
+- `selector`: Selector function to mock out return values for
+- `returnValue`: Value to return whenever the selector is provided to `useSelector`.
+
+The `returnValue` will be directly returned when `useSelector` is called from that `selector`:
 
 ```tsx
 mockRedux().give(selectTitle, "Test Title");
@@ -57,17 +87,7 @@ mockRedux().give(selectTitle, "Test Title");
 <Heading />;
 ```
 
-Much simpler!
-
-## `give`
-
-The basic API for `useSelector` is `.give`.
-It takes two parameters:
-
-- `selector`: Selector function to mock out return values for
-- `returnValue`: Value to return whenever the selector is provided to `useSelector`.
-
-## `giveMock`
+### `giveMock`
 
 If you'd like more control over the return values, use `.giveMock` to provide a [Jest mock](https://jestjs.io/docs/en/mock-functions.html).
 It takes two parameters:
