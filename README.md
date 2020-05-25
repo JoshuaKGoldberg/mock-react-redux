@@ -21,14 +21,14 @@ Separating your unit tests in this way can be particularly useful if your Redux 
 import { mockRedux } from "mock-redux";
 ```
 
-`mock-redux` stubs out the [two common Redux hooks](https://react-redux.js.org/api/hooks) used with functional React components.
+`mock-redux` stubs out [`connect`](https://react-redux.js.org/api/connect) and the [two common Redux hooks](https://react-redux.js.org/api/hooks) used with React components.
 Call `mockRedux()` before your render/mount logic in each unit test.
 
 ### Mocking State
 
 ```tsx
 mockRedux().state({
-  /* ... */
+  title: "Hooray!",
 });
 ```
 
@@ -53,7 +53,7 @@ See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/
 
 ```tsx
 mockRedux()
-  .give(simpleSelector, "Always!")
+  .give(simpleSelector, "Hooray!")
   .giveMock(fancySelector, jest.fn().mockReturnValueOnce("Just the once."));
 ```
 
@@ -99,10 +99,9 @@ See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./doc
 
 ## Gotchas
 
-- Only named selector functions directly passed to `useSelector` are supported.
-  - See [#6](https://github.com/Codecademy/mock-redux/issues/6) for discussion on allowing inline lambdas such as `useSelector(state => state.value)`.
-- If a selector is passed to `useSelector` without having a `.give` or `.giveMock` previuosly declared for it, `mock-redux` will throw an error.
 - The first `mock-redux` import _must_ come before the first `react-redux` import in your test files.
+- `.give` and `.giveMock` will only apply when selectors are passed directly to `useSelector` (e.g. `useSelector(selectValue)`).
+  - For inline selectors such as `useSelector(state => selectValue(state))`, use the `.state` API to set the root state value.
 
 ### Hybrid Usage
 
@@ -113,16 +112,17 @@ Only the test files that import `mock-redux` will have Redux actions stubbed out
 
 `mock-redux` is written in TypeScript and generally type safe.
 
+- `mockRedux()` has an optional `<State>` type which sets the type of the root state passed to `.state`.
 - `.give` return values must match the return types of their selectors.
 - `.giveMock` mocks must match the return types of their selectors.
 
-_Heck yes._
+_Heck yes._ 🤘
 
 ## Development
 
 Requires:
 
-- [Node.js](https://nodejs.org) >10 (LTS)
+- [Node.js](https://nodejs.org) >12
 - [Yarn](https://yarnpkg.com/en)
 
 After [forking the repo from GitHub](https://help.github.com/articles/fork-a-repo):

@@ -1,3 +1,4 @@
+import { mockConnect } from "./connect";
 import { createGetSelector, GetSelector } from "./selectors";
 import { MockRedux, AnySelector } from "./types";
 
@@ -9,26 +10,41 @@ type MockSituation = {
 
 let mockSituation: MockSituation | undefined;
 
-const mockNotImplemented = (name: string) => () => {
-  throw new Error(`${name} is not supported when using mock-redux.`);
-};
-
 const mockStateError = (name: string) => {
   throw new Error(
-    `You included mock-redux but didn't call mockRedux() before calling ${name} from react-redux.`,
+    `You imported mock-redux but didn't call mockRedux() before calling ${name} from react-redux.`,
   );
 };
 
 jest.mock("react-redux", () => {
+  const getDispatch = () => mockSituation?.dispatch ?? mockStateError("useDispatch");
+  const getSelector = (selector: AnySelector) => {
+    return mockSituation
+      ? mockSituation.getSelector(selector).provide()
+      : mockStateError("useSelector");
+  };
+
   return {
-    connect: mockNotImplemented("connect"),
-    Provider: mockNotImplemented("Provider"),
-    useDispatch: () => mockSituation?.dispatch ?? mockStateError("useDispatch"),
-    useSelector: (selector: AnySelector) => {
-      return mockSituation
-        ? mockSituation.getSelector(selector).provide()
-        : mockStateError("useSelector");
+    connect: mockConnect(getDispatch, () => {
+      if (!mockSituation) {
+        throw new Error(
+          "You imported mock-redux but didn't call mockRedux() before rendering a connect() component.",
+        );
+      }
+
+      if (!mockSituation.state) {
+        throw new Error(
+          "You imported mock-redux but didn't set state before rendering a connect() component.",
+        );
+      }
+
+      return mockSituation.state;
+    }),
+    Provider: () => {
+      throw new Error(`Provider is not supported when using mock-redux.`);
     },
+    useDispatch: getDispatch,
+    useSelector: getSelector,
   };
 });
 
@@ -39,7 +55,7 @@ afterEach(() => {
 export const mockRedux = <State>(): MockRedux<State> => {
   if (require.cache[require.resolve("react-redux")]) {
     throw new Error(
-      "It looks like you imported react-redux before mock-redux. Put mock-redux before react-redux or any imports that include react-redux.",
+      "It looks like you imported react-redux before mock-redux. Import mock-redux before react-redux or any imports that include react-redux.",
     );
   }
 
