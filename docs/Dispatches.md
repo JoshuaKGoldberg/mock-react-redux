@@ -111,5 +111,5 @@ dispatch.mockImplementation((action) => {
 
 ## Examples
 
-- [Clicker](./examples/Clicker/Clicker.test.tsx): Tests for the `Clicker` component above
-- [Tracking](./examples/Tracking/Tracking.test.tsx): Component tests that exercise both dispatch and selector logic
+- [Clicker](./examples/Clicker.test.tsx): Tests for the `Clicker` component above
+- [Tracking](./examples/Tracking.test.tsx): Component tests that exercise both dispatch and selector logic

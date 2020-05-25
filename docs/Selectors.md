@@ -47,7 +47,7 @@ That testing setup's complexity and resultant pain can easily grow with your app
 You're also relying a bunch of Redux state in order to test your React view.
 It can be useful to separate view and state logic in tests: especially when state is shared across many places.
 
-Instead, `mock-redux` can _completely replace_ any Redux interactions.
+Instead, `mock-redux` can _simplify_ or even _replace_ any Redux interactions.
 You have two options:
 
 - Providing a mocked Redux state for your unit test
@@ -59,7 +59,7 @@ You can set mock Redux state for the duration of a unit test.
 That state will be provided to selectors called by `useSelector`.
 
 ```tsx
-mockRedux.state({
+mockRedux().state({
   title: "Test Title",
 });
 
@@ -76,7 +76,7 @@ you can completely remove its dependency on Redux state with `.give`.
 It takes two parameters:
 
 - `selector`: Selector function to mock out return values for
-- `returnValue`: Value to return whenever the selector is provided to `useSelector`.
+- `returnValue`: Value to return whenever the selector is provided to `useSelector`
 
 The `returnValue` will be directly returned when `useSelector` is called from that `selector`:
 
@@ -112,5 +112,5 @@ See [Jest's mock functions](https://jestjs.io/docs/en/mock-functions.html) for f
 
 ## Examples
 
-- [Heading](./examples/Heading/Heading.test.tsx): Tests for the `Heading` component above
-- [Tracking](./examples/Tracking/Tracking.test.tsx): Component tests that exercise both dispatch and selector logic
+- [Heading](./examples/Heading.test.tsx): Tests for the `Heading` component above
+- [Tracking](./examples/Tracking.test.tsx): Component tests that exercise both dispatch and selector logic
