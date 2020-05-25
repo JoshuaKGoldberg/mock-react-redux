@@ -50,4 +50,9 @@ export type SelectorGiveMock = <ReturnValue, State>(
  */
 export type AnySelector<ReturnValue = any> = (...params: any[]) => ReturnValue;
 
+/**
+ * Sets a root Redux state.
+ *
+ * @param newState - New root Redux state.
+ */
 export type SetState<State> = (newState: State) => MockRedux;
