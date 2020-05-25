@@ -12,7 +12,7 @@
 
 Mocks out Redux actions and selectors for clean React unit tests in Jest.
 
-Use this package if you'd like your React compnent unit tests to not take dependencies on your full Redux states.
+Use this package if you'd like your React component unit tests to not take dependencies on your full Redux states.
 Separating your unit tests in this way can be particularly useful if your Redux state is complex and/or shared across components.
 
 ## Usage
