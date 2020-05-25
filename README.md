@@ -24,8 +24,8 @@ import { mockRedux } from "mock-redux";
 `mock-redux` stubs out the [two common Redux hooks](https://react-redux.js.org/api/hooks) used with functional React components.
 Call `mockRedux()` before your render/mount logic in each unit test.
 
-> Only function components that call `useDispatch` and/or `useSelector` are supported.
-> `connect()` components and `Provider` contexts will throw errors during tests.
+> Only function components that call `useDispatch` and/or `useSelector` are supported for now.
+> See [#8](https://github.com/Codecademy/mock-redux/issues/8) for `connect()` support.
 
 ### `useSelector`
 
