@@ -22,8 +22,8 @@ See Mark Erikson's [Redux testing strategy blog post](https://blog.isquaredsoftw
 
 ## How Is `mock-redux` Different Than Other Redux Test Libraries?
 
-Most Redux-focused testing libraries aim to set up Redux logic in unit tests for your React components to use.
-[`redux-mock-store`](https://github.com/reduxjs/redux-mock-store), for example, has useful utilities around setting up a mocked version of your Redux store for unit tests.
+Most Redux-focused testing libraries aim to set up Redux logic in tests for your React components to use.
+[`redux-mock-store`](https://github.com/reduxjs/redux-mock-store), for example, has useful utilities around setting up a mocked version of your Redux store for tests.
 
 In a sense, other libraries tend to augment or swap out _Redux_:
 
@@ -35,7 +35,7 @@ react <-----> react-redux <-----> redux
                               redux-mock-store
 ```
 
-`mock-redux` completely swaps out the _`react-redux`_ library from your code, leaving your unit tests just testing the logic in your React components.
+`mock-redux` completely swaps out the _`react-redux`_ library from your code, leaving your tests just testing the logic in your React components.
 
 ```
 react <-----> react-redux ...

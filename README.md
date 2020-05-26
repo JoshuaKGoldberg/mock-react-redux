@@ -10,10 +10,10 @@
 [![Circle CI](https://img.shields.io/circleci/build/github/Codecademy/mock-redux.svg)](https://circleci.com/gh/Codecademy/mock-redux)
 [![Join the chat at https://gitter.im/Codecademy/mock-redux](https://badges.gitter.im/Codecademy/mock-redux.svg)](https://gitter.im/Codecademy/mock-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Mocks out Redux actions and selectors for clean React unit tests in Jest.
+Mocks out Redux actions and selectors for clean React Jest tests.
 
-Tired of setting up, updating, and debugging through complex _Redux_ states in your _React_ unit tests?
-Use this package if you'd like your React component tests to not take dependencies on your full Redux states.
+Tired of setting up, updating, and debugging through complex _Redux_ states in your _React_ tests?
+Use this package if you'd like your React component tests to not take dependencies on your full Redux store.
 
 > See [FAQs](./docs/FAQs.md) for more backing information. 📚
 
@@ -24,7 +24,7 @@ import { mockRedux } from "mock-redux";
 ```
 
 `mock-redux` stubs out [`connect`](https://react-redux.js.org/api/connect) and the [two common Redux hooks](https://react-redux.js.org/api/hooks) used with React components.
-Call `mockRedux()` before your render/mount logic in each unit test.
+Call `mockRedux()` before your render/mount logic in each test.
 
 ### Mocking State
 
@@ -84,7 +84,7 @@ const { dispatch } = mockRedux();
 ```
 
 The `dispatch` function returned by [`useDispatch`](https://react-redux.js.org/api/hooks#usedispatch) will be replaced by a `jest.fn()` spy.
-You can then assert against it as with any Jest mock in your unit tests:
+You can then assert against it as with any Jest mock in your tests:
 
 ```tsx
 it("dispatches the pageLoaded action when rendered", () => {
@@ -107,7 +107,7 @@ See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./doc
 
 ### Hybrid Usage
 
-You don't have to use `mock-redux` in _every_ unit test file in your repository.
+You don't have to use `mock-redux` in _every_ test file in your repository.
 Only the test files that import `mock-redux` will have Redux actions stubbed out.
 
 ### TypeScript Usage

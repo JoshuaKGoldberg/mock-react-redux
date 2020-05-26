@@ -50,12 +50,12 @@ It can be useful to separate view and state logic in tests: especially when stat
 Instead, `mock-redux` can _simplify_ or even _replace_ any Redux interactions.
 You have two options:
 
-- Providing a mocked Redux state for your unit test
+- Providing a mocked Redux state for your test
 - Directly using predefined return values or mock functions for individual selectors
 
 ## Mocking State
 
-You can set mock Redux state for the duration of a unit test.
+You can set mock Redux state for the duration of a test.
 That state will be provided to selectors called by `useSelector`.
 
 ```tsx
@@ -67,9 +67,9 @@ mockRedux().state({
 <Heading />;
 ```
 
-`.state` takes in a single parameter and can only be called once per unit test:
+`.state` takes in a single parameter and can only be called once per test:
 
-- `state`: A value to use as the root Redux state for the duration of the unit test
+- `state`: A value to use as the root Redux state for the duration of the test
 
 ## Mocking Selectors
 

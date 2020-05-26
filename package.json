@@ -1,6 +1,6 @@
 {
   "author": "Codecademy",
-  "description": "Mocks out Redux actions and selectors for clean React unit tests in Jest.",
+  "description": "Mocks out Redux actions and selectors for clean React Jest tests.",
   "devDependencies": {
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
