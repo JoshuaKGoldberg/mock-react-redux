@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react";
-import { mockRedux } from "mock-redux";
+import { mockReactRedux } from "mock-react-redux";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -26,7 +26,7 @@ const Tracking = () => {
 
 describe(Tracking, () => {
   it("renders a singular message when it has been clicked 1 time", () => {
-    mockRedux().give(selectClicks, 1);
+    mockReactRedux().give(selectClicks, 1);
 
     const view = render(<Tracking />);
 
@@ -34,7 +34,7 @@ describe(Tracking, () => {
   });
 
   it("renders a plural message when it has been clicked 2 times", () => {
-    mockRedux().state({ clicks: 2 });
+    mockReactRedux().state({ clicks: 2 });
 
     const view = render(<Tracking />);
 
@@ -42,7 +42,7 @@ describe(Tracking, () => {
   });
 
   it("dispatches the markClicked event when clicked", () => {
-    const { dispatch } = mockRedux().give(selectClicks, 1);
+    const { dispatch } = mockReactRedux().give(selectClicks, 1);
 
     const view = render(<Tracking />);
 

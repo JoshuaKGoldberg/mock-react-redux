@@ -1,6 +1,6 @@
 # Examples
 
-This folder contains a few test files showcasing basic usage of `mock-redux` with `@testing-library/react`.
+This folder contains a few test files showcasing basic usage of `mock-react-redux` with `@testing-library/react`.
 
 | Example                        | Selectors | Dispatches |
 | ------------------------------ | --------- | ---------- |

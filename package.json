@@ -25,7 +25,7 @@
     "typescript": "^3.9.3"
   },
   "main": "src/index.js",
-  "homepage": "https://github.com/Codecademy/mock-redux#readme",
+  "homepage": "https://github.com/Codecademy/mock-react-redux#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -47,10 +47,10 @@
       "prettier --write"
     ]
   },
-  "name": "mock-redux",
+  "name": "mock-react-redux",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Codecademy/mock-redux.git"
+    "url": "git+https://github.com/Codecademy/mock-react-redux.git"
   },
   "scripts": {
     "eslint": "eslint \"./src/*.ts\" \"./src/**/*.ts\" --report-unused-disable-directives",

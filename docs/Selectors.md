@@ -47,7 +47,7 @@ That testing setup's complexity and resultant pain can easily grow with your app
 You're also relying a bunch of Redux state in order to test your React view.
 It can be useful to separate view and state logic in tests: especially when state is shared across many places.
 
-Instead, `mock-redux` can _simplify_ or even _replace_ any Redux interactions.
+Instead, `mock-react-redux` can _simplify_ or even _replace_ any Redux interactions.
 You have two options:
 
 - Providing a mocked Redux state for your test
@@ -59,7 +59,7 @@ You can set mock Redux state for the duration of a test.
 That state will be provided to selectors called by `useSelector`.
 
 ```tsx
-mockRedux().state({
+mockReactRedux().state({
   title: "Test Title",
 });
 
@@ -85,7 +85,7 @@ It takes two parameters:
 The `returnValue` will be directly returned when `useSelector` is called from that `selector`:
 
 ```tsx
-mockRedux().give(selectTitle, "Test Title");
+mockReactRedux().give(selectTitle, "Test Title");
 
 // Renders <h1>Test Title</h1>
 <Heading />;
@@ -102,7 +102,7 @@ It takes two parameters:
 For example, you might want the selector to return a different value than the first on subsequent calls:
 
 ```tsx
-mockRedux().giveMock(
+mockReactRedux().giveMock(
   selectTitle,
   jest
     .fn()

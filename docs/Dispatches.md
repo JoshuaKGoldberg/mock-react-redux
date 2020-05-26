@@ -79,11 +79,11 @@ That testing setup's complexity and resultant pain can easily grow with your app
 You're also relying a bunch of Redux state in order to test your React view.
 It can be useful to separate view and state logic in tests: especially when state is shared across many places.
 
-Instead, `mock-redux` can _completely replace_ any Redux interactions.
+Instead, `mock-react-redux` can _completely replace_ any Redux interactions.
 It'll instead swap out the `dispatch` function with a [Jest mock](https://jestjs.io/docs/en/mock-functions.html):
 
 ```tsx
-const { dispatch } = mockRedux();
+const { dispatch } = mockReactRedux();
 
 const view = render(<Clicker />);
 

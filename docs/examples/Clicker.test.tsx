@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react";
-import { mockRedux } from "mock-redux";
+import { mockReactRedux } from "mock-react-redux";
 import * as React from "react";
 import { useDispatch } from "react-redux";
 
@@ -19,7 +19,7 @@ const Clicker = () => {
 
 describe(Clicker, () => {
   it("dispatches the markClicked event when clicked", () => {
-    const { dispatch } = mockRedux();
+    const { dispatch } = mockReactRedux();
 
     const view = render(<Clicker />);
 

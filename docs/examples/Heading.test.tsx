@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { mockRedux } from "mock-redux";
+import { mockReactRedux } from "mock-react-redux";
 import * as React from "react";
 import { useSelector } from "react-redux";
 
@@ -18,7 +18,7 @@ const Heading = () => {
 describe(Heading, () => {
   describe("Mocking State", () => {
     it("renders the title from state", () => {
-      mockRedux().state({ title: "Test Title" });
+      mockReactRedux().state({ title: "Test Title" });
 
       const view = render(<Heading />);
 
@@ -28,7 +28,7 @@ describe(Heading, () => {
 
   describe("Mocking Selectors", () => {
     it("renders the title from state", () => {
-      mockRedux().give(selectTitle, "Test Title");
+      mockReactRedux().give(selectTitle, "Test Title");
 
       const view = render(<Heading />);
 
