@@ -32,17 +32,17 @@ react <-----> react-redux <-----> redux
                                   |___|
                                     ^
                                     |
-                              redux-mock-store
+                             redux-mock-store
 ```
 
 `mock-react-redux` completely swaps out _`react-redux`_, leaving your tests just testing the logic in your React components.
 
 ```
-react <-----> react-redux ...
+react <-----> react-redux  ...
               |_________|
                    ^
                    |
-              mock-react-redux
+            mock-react-redux
 ```
 
 ## How Does `mock-react-redux` Work?
