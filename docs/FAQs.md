@@ -35,7 +35,7 @@ react <-----> react-redux <-----> redux
                               redux-mock-store
 ```
 
-`mock-redux` completely swaps out the _`react-redux`_ library from your code, leaving your tests just testing the logic in your React components.
+`mock-redux` completely swaps out _`react-redux`_, leaving your tests just testing the logic in your React components.
 
 ```
 react <-----> react-redux ...
