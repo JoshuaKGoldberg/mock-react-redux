@@ -16,6 +16,10 @@ This approach is particularily effective in applications that do some or all of:
 
 See Mark Erikson's [Redux testing strategy blog post](https://blog.isquaredsoftware.com/2019/07/blogged-answers-thoughts-on-hooks/) for prior discussion and thoughts.
 
+> Is React your actual "app"?
+> Or is it "just" the UI layer, with the real app being the logic and data kept outside the component tree?
+> Both are very valid viewpoints, again with differing tradeoffs.
+
 ## How Is `mock-redux` Different Than Other Redux Test Libraries?
 
 Most Redux-focused testing libraries aim to set up Redux logic in unit tests for your React components to use.
