@@ -4,12 +4,17 @@
 
 Maybe!
 
+For starters, this library is _very new_ and has yet to undergo the vigorous heated Twitter debates that all popular JavaScript libraries go through -- if ever will.
+Take everything here with a grain of salt.
+
 `mock-redux` is excellent for separating your React and Redux logic areas.
 Many applications intentionally try to independently test the two areas.
 This approach is particularily effective in applications that do some or all of:
 
 - Keep a large amount of data in their Redux state and/or share pieces of that state among multiple components
 - Test Redux logic (actions, selectors, and/or reducers) in isolation from React components
+
+See Mark Erikson's [Redux testing strategy blog post](https://blog.isquaredsoftware.com/2019/07/blogged-answers-thoughts-on-hooks/) for prior discussion and thoughts.
 
 ## How Is `mock-redux` Different Than Other Redux Test Libraries?
 

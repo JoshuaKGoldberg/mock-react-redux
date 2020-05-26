@@ -114,7 +114,7 @@ mockRedux().giveMock(
 
 See [Jest's mock functions](https://jestjs.io/docs/en/mock-functions.html) for full documentation.
 
-> See [FAQs](./FAQ) for help choosing between these strategies and pracices for mocking selectors.
+> See [FAQs](./FAQs.md) for help choosing between these strategies and pracices for mocking selectors.
 
 ## Examples
 
