@@ -50,12 +50,12 @@ It can be useful to separate view and state logic in tests: especially when stat
 Instead, `mock-redux` can _simplify_ or even _replace_ any Redux interactions.
 You have two options:
 
-- Providing a mocked Redux state for your unit test
+- Providing a mocked Redux state for your test
 - Directly using predefined return values or mock functions for individual selectors
 
 ## Mocking State
 
-You can set mock Redux state for the duration of a unit test.
+You can set mock Redux state for the duration of a test.
 That state will be provided to selectors called by `useSelector`.
 
 ```tsx
@@ -67,9 +67,9 @@ mockRedux().state({
 <Heading />;
 ```
 
-`.state` takes in a single parameter and can only be called once per unit test:
+`.state` takes in a single parameter and can only be called once per test:
 
-- `state`: A value to use as the root Redux state for the duration of the unit test
+- `state`: A value to use as the root Redux state for the duration of the test
 
 ## Mocking Selectors
 
@@ -114,14 +114,7 @@ mockRedux().giveMock(
 
 See [Jest's mock functions](https://jestjs.io/docs/en/mock-functions.html) for full documentation.
 
-### Which Should I Use?
-
-That's up to you.
-
-If your application already tests its Redux state separately, or you otherwise don't want to mix your Redux logic in your React views, `.give` is a great way to separate the two.
-Its only caveat is that it doesn't allow inline ("curried") selectors like `useSelector(state => selectSomeState(state, true))`.
-
-Otherwise, if you either prefer including the shape of your Redux state in your React tests or generally cannot use `.give`, use `.state` to set up mock states per test.
+> See [FAQs](./FAQs.md) for help choosing between these strategies and pracices for mocking selectors.
 
 ## Examples
 
