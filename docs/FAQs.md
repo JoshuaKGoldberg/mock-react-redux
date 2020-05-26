@@ -4,7 +4,7 @@
 
 Maybe!
 
-For starters, this library is _very new_ and has yet to undergo the vigorous heated Twitter debates that all popular JavaScript libraries go through -- if ever will.
+For starters, this library is _very new_ and has yet to undergo the vigorous heated Twitter debates that all popular JavaScript libraries go through -- if it ever will.
 Take everything here with a grain of salt.
 
 `mock-redux` is excellent for separating your React and Redux logic areas.
