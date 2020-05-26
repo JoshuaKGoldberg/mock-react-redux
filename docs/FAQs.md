@@ -1,13 +1,13 @@
 # Frequently Asked Questions
 
-## Should I Use `mock-redux`?
+## Should I Use `mock-react-redux`?
 
 Maybe!
 
 For starters, this library is _very new_ and has yet to undergo the vigorous heated Twitter debates that all popular JavaScript libraries go through -- if it ever will.
 Take everything here with a grain of salt.
 
-`mock-redux` is excellent for separating your React and Redux logic areas.
+`mock-react-redux` is excellent for separating your React and Redux logic areas.
 Many applications intentionally try to independently test the two areas.
 This approach is particularily effective in applications that do some or all of:
 
@@ -20,7 +20,7 @@ See Mark Erikson's [Redux testing strategy blog post](https://blog.isquaredsoftw
 > Or is it "just" the UI layer, with the real app being the logic and data kept outside the component tree?
 > Both are very valid viewpoints, again with differing tradeoffs.
 
-## How Is `mock-redux` Different Than Other Redux Test Libraries?
+## How Is `mock-react-redux` Different Than Other Redux Test Libraries?
 
 Most Redux-focused testing libraries aim to set up Redux logic in tests for your React components to use.
 [`redux-mock-store`](https://github.com/reduxjs/redux-mock-store), for example, has useful utilities around setting up a mocked version of your Redux store for tests.
@@ -32,23 +32,23 @@ react <-----> react-redux <-----> redux
                                   |___|
                                     ^
                                     |
-                              redux-mock-store
+                             redux-mock-store
 ```
 
-`mock-redux` completely swaps out _`react-redux`_, leaving your tests just testing the logic in your React components.
+`mock-react-redux` completely swaps out _`react-redux`_, leaving your tests just testing the logic in your React components.
 
 ```
-react <-----> react-redux ...
+react <-----> react-redux  ...
               |_________|
                    ^
                    |
-              mock-redux
+            mock-react-redux
 ```
 
-## How Does `mock-redux` Work?
+## How Does `mock-react-redux` Work?
 
 [Jest module mocks](https://jestjs.io/docs/en/mock-functions#mocking-modules).
-The entire `react-redux` module is replaced with `mock-redux` logic, so your React components only ever interact with mocked versions of `connect`, `useSelector`, and `useDispatch`.
+The entire `react-redux` module is replaced with `mock-react-redux` logic, so your React components only ever interact with mocked versions of `connect`, `useSelector`, and `useDispatch`.
 
 - `useSelector` is replaced by a function that:
   - Calls a predefined mock if you've defined a return value with `.give` or mock with `.giveMock` for that selector
@@ -67,7 +67,7 @@ Otherwise, if you either prefer including the shape of your Redux state in your 
 
 ## Help! My `.give` Selectors Aren't Getting Mocked!?
 
-`mock-redux` can only mock out selectors that are _directly_ passed to `useSelector`:
+`mock-react-redux` can only mock out selectors that are _directly_ passed to `useSelector`:
 
 ```tsx
 useSelector(selectValue);
@@ -79,7 +79,7 @@ If you pass anything else, such as a function wrapping around a selector...
 useSelector((state) => selectValueByKey(state, "someKey"));
 ```
 
-...then `mock-redux` won't be able to mock out the call to `selectValue`, and the original function will get used.
+...then `mock-react-redux` won't be able to mock out the call to `selectValue`, and the original function will get used.
 
 You have few options for dealing with this situation:
 
@@ -98,4 +98,4 @@ You have few options for dealing with this situation:
   const someValue = values.someKey;
   ```
 
-- Use `mock-redux`'s `.state` API to pass a custom state to your selector
+- Use `mock-react-redux`'s `.state` API to pass a custom state to your selector

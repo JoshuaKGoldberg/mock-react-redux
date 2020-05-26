@@ -1,2 +1,2 @@
-export * from "./mockRedux";
+export * from "./mockReactRedux";
 export * from "./types";

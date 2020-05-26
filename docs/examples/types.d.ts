@@ -2,7 +2,7 @@
 // These documentation test examples are actually run as part of this repository's `yarn test` command.
 // Kind of cool, right? 🤗
 
-declare module "mock-redux" {
+declare module "mock-react-redux" {
   const _: typeof import("../../src/index");
   export = _;
 }

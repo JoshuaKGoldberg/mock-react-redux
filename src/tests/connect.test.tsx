@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { mockRedux } from "mock-redux";
+import { mockReactRedux } from "mock-react-redux";
 import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
 import { connect } from "react-redux";
@@ -15,7 +15,7 @@ describe("connect", () => {
   it("passes through to the component when there are no mappings", async () => {
     const ConnectedRendersValue = connect()((props: { text: string }) => <>{props.text}</>);
 
-    mockRedux();
+    mockReactRedux();
 
     const view = render(<ConnectedRendersValue text={value} />);
 
@@ -32,10 +32,10 @@ describe("connect", () => {
       const mapStateToProps = (state: WithValue) => ({ value: selectValue(state) });
       const ConnectedRendersValue = connect(mapStateToProps)(RendersValue);
 
-      mockRedux();
+      mockReactRedux();
 
       expect(() => ConnectedRendersValue({})).toThrowError(
-        "You imported mock-redux but didn't set state before rendering a connect() component.",
+        "You imported mock-react-redux but didn't set state before rendering a connect() component.",
       );
     });
 
@@ -44,7 +44,7 @@ describe("connect", () => {
       const mapStateToProps = (state: WithValue) => ({ value: selectValue(state) });
       const ConnectedRendersValue = connect(mapStateToProps)(RendersValue);
 
-      mockRedux().state({ value });
+      mockReactRedux().state({ value });
 
       const view = render(<ConnectedRendersValue />);
 
@@ -60,17 +60,17 @@ describe("connect", () => {
       return null;
     };
 
-    it("throws an error when a connected component is rendered without having called mockRedux", () => {
+    it("throws an error when a connected component is rendered without having called mockReactRedux", () => {
       const ConnectedFiresAction = connect(null, { action })(FiresAction);
 
       expect(() => ConnectedFiresAction({})).toThrowError(
-        "You imported mock-redux but didn't call mockRedux() before calling useDispatch from react-redux.",
+        "You imported mock-react-redux but didn't call mockReactRedux() before calling useDispatch from react-redux.",
       );
     });
 
     it("mocks an action dispatch when mapDispatchToProps is used in the object form", async () => {
       const ConnectedFiresAction = connect(null, { action })(FiresAction);
-      const { dispatch } = mockRedux();
+      const { dispatch } = mockReactRedux();
 
       act(() => {
         render(<ConnectedFiresAction />);
@@ -83,7 +83,7 @@ describe("connect", () => {
       const ConnectedFiresAction = connect(null, (dispatch) => ({
         action: () => dispatch(action(payload)),
       }))(FiresAction);
-      const { dispatch } = mockRedux();
+      const { dispatch } = mockReactRedux();
 
       act(() => {
         render(<ConnectedFiresAction />);
@@ -115,7 +115,7 @@ describe("connect", () => {
       const spy = jest.fn();
       const ConnectedTracksProps = connect(mapStateToProps, mapDispatchToProps)(TracksProps);
 
-      mockRedux().state({});
+      mockReactRedux().state({});
 
       act(() => {
         render(<ConnectedTracksProps spy={spy} />);
@@ -136,7 +136,7 @@ describe("connect", () => {
         (stateProps, dispatchProps, ownProps) => ({ stateProps, dispatchProps, ...ownProps }),
       )(TracksProps);
 
-      mockRedux().state({});
+      mockReactRedux().state({});
 
       act(() => {
         render(<ConnectedTracksProps spy={spy} />);

@@ -1,4 +1,4 @@
-# 🎭 mock-redux
+# 🎭 mock-react-redux
 
 > 🚧 This repository is still under evaluation!
 > We're not sure yet whether this is the approach we want to take.
@@ -6,9 +6,9 @@
 
 [![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 ![TypeScript: Strict](https://img.shields.io/badge/typescript-strict-brightgreen.svg)
-[![NPM version](https://badge.fury.io/js/mock-redux.svg)](http://badge.fury.io/js/mock-redux)
-[![Circle CI](https://img.shields.io/circleci/build/github/Codecademy/mock-redux.svg)](https://circleci.com/gh/Codecademy/mock-redux)
-[![Join the chat at https://gitter.im/Codecademy/mock-redux](https://badges.gitter.im/Codecademy/mock-redux.svg)](https://gitter.im/Codecademy/mock-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![NPM version](https://badge.fury.io/js/mock-react-redux.svg)](http://badge.fury.io/js/mock-react-redux)
+[![Circle CI](https://img.shields.io/circleci/build/github/Codecademy/mock-react-redux.svg)](https://circleci.com/gh/Codecademy/mock-react-redux)
+[![Join the chat at https://gitter.im/Codecademy/mock-react-redux](https://badges.gitter.im/Codecademy/mock-react-redux.svg)](https://gitter.im/Codecademy/mock-react-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Mocks out Redux actions and selectors for clean React Jest tests.
 
@@ -20,16 +20,16 @@ Use this package if you'd like your React component tests to not take dependenci
 ## Usage
 
 ```js
-import { mockRedux } from "mock-redux";
+import { mockReactRedux } from "mock-react-redux";
 ```
 
-`mock-redux` stubs out [`connect`](https://react-redux.js.org/api/connect) and the [two common Redux hooks](https://react-redux.js.org/api/hooks) used with React components.
-Call `mockRedux()` before your render/mount logic in each test.
+`mock-react-redux` stubs out [`connect`](https://react-redux.js.org/api/connect) and the [two common Redux hooks](https://react-redux.js.org/api/hooks) used with React components.
+Call `mockReactRedux()` before your render/mount logic in each test.
 
 ### Mocking State
 
 ```tsx
-mockRedux().state({
+mockReactRedux().state({
   title: "Hooray!",
 });
 ```
@@ -38,7 +38,7 @@ Sets a root state to be passed to your component's selectors.
 
 ```tsx
 it("displays the title when there is a title", () => {
-  mockRedux().state({
+  mockReactRedux().state({
     title: "Hooray!",
   });
 
@@ -54,7 +54,7 @@ See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/
 ### Mocking Selectors
 
 ```tsx
-mockRedux()
+mockReactRedux()
   .give(simpleSelector, "Hooray!")
   .giveMock(fancySelector, jest.fn().mockReturnValueOnce("Just the once."));
 ```
@@ -64,7 +64,7 @@ These work similarly to Jest mocks: `.give` takes in the return value that will 
 
 ```tsx
 it("displays the title when there is a title", () => {
-  mockRedux().give(selectTitle, "Hooray!");
+  mockReactRedux().give(selectTitle, "Hooray!");
 
   // state => state.title
   const view = render(<RendersTitle />);
@@ -80,7 +80,7 @@ See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/
 ### Dispatch Spies
 
 ```tsx
-const { dispatch } = mockRedux();
+const { dispatch } = mockReactRedux();
 ```
 
 The `dispatch` function returned by [`useDispatch`](https://react-redux.js.org/api/hooks#usedispatch) will be replaced by a `jest.fn()` spy.
@@ -88,7 +88,7 @@ You can then assert against it as with any Jest mock in your tests:
 
 ```tsx
 it("dispatches the pageLoaded action when rendered", () => {
-  const { dispatch } = mockRedux();
+  const { dispatch } = mockReactRedux();
 
   // dispatch(pageLoaded())
   render(<DispatchesPageLoaded />);
@@ -101,20 +101,20 @@ See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./doc
 
 ## Gotchas
 
-- The first `mock-redux` import _must_ come before the first `react-redux` import in your test files.
+- The first `mock-react-redux` import _must_ come before the first `react-redux` import in your test files.
 - `.give` and `.giveMock` will only apply when selectors are passed directly to `useSelector` (e.g. `useSelector(selectValue)`).
   - See [FAQs](./docs/FAQs.md#help-my-give-selectors-arent-getting-mocked) for more tips and tricks.
 
 ### Hybrid Usage
 
-You don't have to use `mock-redux` in _every_ test file in your repository.
-Only the test files that import `mock-redux` will have `react-redux` stubbed out.
+You don't have to use `mock-react-redux` in _every_ test file in your repository.
+Only the test files that import `mock-react-redux` will have `react-redux` stubbed out.
 
 ### TypeScript Usage
 
-`mock-redux` is written in TypeScript and generally type safe.
+`mock-react-redux` is written in TypeScript and generally type safe.
 
-- `mockRedux()` has an optional `<State>` type which sets the type of the root state passed to `.state`.
+- `mockReactRedux()` has an optional `<State>` type which sets the type of the root state passed to `.state`.
 - `.give` return values must match the return types of their selectors.
 - `.giveMock` mocks must match the return types of their selectors.
 
@@ -130,16 +130,16 @@ Requires:
 After [forking the repo from GitHub](https://help.github.com/articles/fork-a-repo):
 
 ```
-git clone https://github.com/<your-name-here>/mock-redux
-cd mock-redux
+git clone https://github.com/<your-name-here>/mock-react-redux
+cd mock-react-redux
 yarn
 ```
 
 ### Contribution Guidelines
 
 We'd love to have you contribute!
-Check the [issue tracker](https://github.com/Codecademy/mock-redux/issues) for issues labeled [`accepting prs`](https://github.com/Codecademy/mock-redux/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22accepting+prs%22) to find bug fixes and feature requests the community can work on.
-If this is your first time working with this code, the [`good first issue`](https://github.com/Codecademy/mock-redux/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+) label indicates good introductory issues.
+Check the [issue tracker](https://github.com/Codecademy/mock-react-redux/issues) for issues labeled [`accepting prs`](https://github.com/Codecademy/mock-react-redux/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22accepting+prs%22) to find bug fixes and feature requests the community can work on.
+If this is your first time working with this code, the [`good first issue`](https://github.com/Codecademy/mock-react-redux/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+) label indicates good introductory issues.
 
 Please note that this project is released with a [Contributor Covenant](https://www.contributor-covenant.org).
 By participating in this project you agree to abide by its terms.

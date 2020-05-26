@@ -1,6 +1,6 @@
 {
   "moduleNameMapper": {
-    "^mock-redux$": "<rootDir>/src/index"
+    "^mock-react-redux$": "<rootDir>/src/index"
   },
   "testRegex": ["\\.test\\.tsx?$"]
 }

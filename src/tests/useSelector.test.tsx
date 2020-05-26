@@ -1,4 +1,4 @@
-import { mockRedux } from "mock-redux";
+import { mockReactRedux } from "mock-react-redux";
 import { useSelector } from "react-redux";
 
 type TestState = {
@@ -8,14 +8,14 @@ type TestState = {
 const selectTestValue = (state: TestState) => state.value;
 
 describe("useSelector", () => {
-  it("throws an error when mockRedux was not previously called", () => {
+  it("throws an error when mockReactRedux was not previously called", () => {
     expect(() => useSelector(selectTestValue)).toThrowError(
-      `You imported mock-redux but didn't call mockRedux() before calling useSelector from react-redux.`,
+      `You imported mock-react-redux but didn't call mockReactRedux() before calling useSelector from react-redux.`,
     );
   });
 
   it("throws an error when the selector has not been given a return or mock and mock state has not been set", () => {
-    mockRedux();
+    mockReactRedux();
 
     expect(() => useSelector(selectTestValue)).toThrowError(
       `No Redux state or mock defined for 'selectTestValue'`,
@@ -25,7 +25,7 @@ describe("useSelector", () => {
   it("uses the mock state when mock state has been set", () => {
     const value = "Hooray!";
 
-    mockRedux().state({ value });
+    mockReactRedux().state({ value });
 
     const result = useSelector(selectTestValue);
 
@@ -36,7 +36,7 @@ describe("useSelector", () => {
     it("returns the provided value for a selector when the selector was given a value", () => {
       const testValue = "Hi!";
 
-      mockRedux().give(selectTestValue, testValue);
+      mockReactRedux().give(selectTestValue, testValue);
 
       const result = useSelector(selectTestValue);
 
@@ -46,7 +46,7 @@ describe("useSelector", () => {
     it("returns the provided value for a selector when the selector was given a value and a mock state was set", () => {
       const testValue = "Hi!";
 
-      mockRedux().give(selectTestValue, testValue).state({ value: "Something else!?" });
+      mockReactRedux().give(selectTestValue, testValue).state({ value: "Something else!?" });
 
       const result = useSelector(selectTestValue);
 
@@ -54,7 +54,7 @@ describe("useSelector", () => {
     });
 
     it("throws an error when called a second time for a selector when the selector was given a value", () => {
-      const { give } = mockRedux();
+      const { give } = mockReactRedux();
 
       give(selectTestValue, "");
 
@@ -68,7 +68,7 @@ describe("useSelector", () => {
     it("passes through a mock implementation for a selector when the selector was given a value", () => {
       const testValue = "Hi!";
 
-      mockRedux().giveMock(
+      mockReactRedux().giveMock(
         selectTestValue,
         jest.fn(() => testValue),
       );
@@ -81,7 +81,7 @@ describe("useSelector", () => {
     it("passes through a mock implementation for a selector when the selector was given a value and a mock state was set", () => {
       const testValue = "Hi!";
 
-      mockRedux()
+      mockReactRedux()
         .giveMock(
           selectTestValue,
           jest.fn(() => testValue),
@@ -94,7 +94,7 @@ describe("useSelector", () => {
     });
 
     it("throws an error when called a second time for a selector when the selector was given a value", () => {
-      const { giveMock } = mockRedux();
+      const { giveMock } = mockReactRedux();
 
       giveMock(
         selectTestValue,

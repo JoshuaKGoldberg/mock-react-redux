@@ -1,7 +1,7 @@
 /**
  * Test APIs to modify the mocked react-redux hooks' behavior.
  */
-export type MockRedux<State = any> = {
+export type MockReactRedux<State = any> = {
   /**
    * Mock dispatch function returned to components via useDispatch().
    */
@@ -32,7 +32,7 @@ export type MockRedux<State = any> = {
 export type SelectorGive = <ReturnValue, State>(
   selector: (state: State) => ReturnValue,
   returnValue: ReturnValue,
-) => MockRedux;
+) => MockReactRedux;
 
 /**
  * Sets a Jest mock to be called instead of a selector.
@@ -43,7 +43,7 @@ export type SelectorGive = <ReturnValue, State>(
 export type SelectorGiveMock = <ReturnValue, State>(
   selector: (state: State) => ReturnValue,
   returnValue: jest.Mock<ReturnValue>,
-) => MockRedux;
+) => MockReactRedux;
 
 /**
  * General-purpose function type referring to any Redux selector function.
@@ -55,4 +55,4 @@ export type AnySelector<ReturnValue = any> = (...params: any[]) => ReturnValue;
  *
  * @param newState - New root Redux state.
  */
-export type SetState<State> = (newState: State) => MockRedux;
+export type SetState<State> = (newState: State) => MockReactRedux;
