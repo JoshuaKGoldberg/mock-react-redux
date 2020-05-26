@@ -81,7 +81,7 @@ useSelector((state) => selectValueByKey(state, "someKey"));
 
 ...then `mock-redux` won't be able to mock out the call to `selectValue`, and the original function will get used.
 
-You have few couple options for dealing with this situation:
+You have few options for dealing with this situation:
 
 - Figure out a way to move whatever logic generated the selector into Redux, so you can directly pass a selector into it:
 
