@@ -48,7 +48,7 @@ react <-----> react-redux ...
 ## How Does `mock-redux` Work?
 
 [Jest module mocks](https://jestjs.io/docs/en/mock-functions#mocking-modules).
-The entire `react-redux` module is replaced with `mock-redux` logic, so your React components only ever interact with stubbed versions of `connect`, `useSelector`, and `useDispatch`.
+The entire `react-redux` module is replaced with `mock-redux` logic, so your React components only ever interact with mocked versions of `connect`, `useSelector`, and `useDispatch`.
 
 - `useSelector` is replaced by a function that:
   - Calls a predefined mock if you've defined a return value with `.give` or mock with `.giveMock` for that selector
