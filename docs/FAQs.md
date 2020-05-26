@@ -84,13 +84,18 @@ useSelector((state) => selectValueByKey(state, "someKey"));
 You have few couple options for dealing with this situation:
 
 - Figure out a way to move whatever logic generated the selector into Redux, so you can directly pass a selector into it:
+
   ```tsx
   const someValue = useSelector(selectValueUnderSomeKey);
   ```
-  - Protip: [`reselect`](https://github.com/reduxjs/reselect) can help you compose selectors
+
+  - Protip: [`reselect`](https://github.com/reduxjs/reselect) can help you compose selectors. ✨
+
 - Figure out a way to move the extra logic in the component to outside the selector call, so you can pass the selector directly to `useSelector` and perform logic on it after:
+
   ```tsx
   const values = useSelector(selectValues);
   const someValue = values.someKey;
   ```
+
 - Use `mock-redux`'s `.state` API to pass a custom state to your selector

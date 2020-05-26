@@ -103,7 +103,6 @@ See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./doc
 
 - The first `mock-redux` import _must_ come before the first `react-redux` import in your test files.
 - `.give` and `.giveMock` will only apply when selectors are passed directly to `useSelector` (e.g. `useSelector(selectValue)`).
-  - For inline selectors such as `useSelector(state => selectValue(state))`, use the `.state` API to set the root state value.
   - See [FAQs](./docs/FAQs.md#help-my-give-selectors-arent-getting-mocked) for more tips and tricks.
 
 ### Hybrid Usage
