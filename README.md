@@ -109,7 +109,7 @@ See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./doc
 ### Hybrid Usage
 
 You don't have to use `mock-redux` in _every_ test file in your repository.
-Only the test files that import `mock-redux` will have Redux actions stubbed out.
+Only the test files that import `mock-redux` will have `react-redux` stubbed out.
 
 ### TypeScript Usage
 
