@@ -1,4 +1,5 @@
 {
+  "moduleFileExtensions": ["tsx", "ts", "js"],
   "moduleNameMapper": {
     "^mock-react-redux$": "<rootDir>/src/index"
   },

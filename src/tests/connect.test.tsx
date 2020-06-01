@@ -27,9 +27,18 @@ describe("connect", () => {
       return <>{value}</>;
     };
 
+    const selectValue = (state: WithValue) => state.value;
+    const mapStateToProps = (state: WithValue) => ({ value: selectValue(state) });
+
+    it("throws an error when a connected component is rendered calling mockReactRedux()", () => {
+      const ConnectedRendersValue = connect(mapStateToProps)(RendersValue);
+
+      expect(() => ConnectedRendersValue({})).toThrowError(
+        "You imported mock-react-redux but didn't call mockReactRedux() before rendering a connect() component.",
+      );
+    });
+
     it("throws an error when a connected component is rendered without a mock state", () => {
-      const selectValue = (state: WithValue) => state.value;
-      const mapStateToProps = (state: WithValue) => ({ value: selectValue(state) });
       const ConnectedRendersValue = connect(mapStateToProps)(RendersValue);
 
       mockReactRedux();
@@ -40,8 +49,6 @@ describe("connect", () => {
     });
 
     it("provides a selector value when mapStateToProps calls a selector", async () => {
-      const selectValue = (state: WithValue) => state.value;
-      const mapStateToProps = (state: WithValue) => ({ value: selectValue(state) });
       const ConnectedRendersValue = connect(mapStateToProps)(RendersValue);
 
       mockReactRedux().state({ value });
