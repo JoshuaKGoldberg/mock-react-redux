@@ -14,11 +14,19 @@ describe("useSelector", () => {
     );
   });
 
-  it("throws an error when the selector has not been given a return or mock and mock state has not been set", () => {
+  it("throws an error when a named selector has not been given a return or mock and mock state has not been set", () => {
     mockReactRedux();
 
     expect(() => useSelector(selectTestValue)).toThrowError(
       `No Redux state or mock defined for 'selectTestValue'`,
+    );
+  });
+
+  it("throws an error when an anonymous selector has not been given a return or mock and mock state has not been set", () => {
+    mockReactRedux();
+
+    expect(() => useSelector(() => true)).toThrowError(
+      `No Redux state or mock defined for '() => true'`,
     );
   });
 
@@ -53,13 +61,24 @@ describe("useSelector", () => {
       expect(result).toEqual(testValue);
     });
 
-    it("throws an error when called a second time for a selector when the selector was given a value", () => {
+    it("throws an error when called a second time for a named selector when the selector was given a value", () => {
       const { give } = mockReactRedux();
 
       give(selectTestValue, "");
 
       expect(() => give(selectTestValue, "")).toThrowError(
         "Attempted to provide a second mock for 'selectTestValue'",
+      );
+    });
+
+    it("throws an error when called a second time for an anonymous selector when the selector was given a value", () => {
+      const { give } = mockReactRedux();
+      const selector = (() => () => "")();
+
+      give(selector, "");
+
+      expect(() => give(selector, "")).toThrowError(
+        `Attempted to provide a second mock for '() => ""'`,
       );
     });
   });
