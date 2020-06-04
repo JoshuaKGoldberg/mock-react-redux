@@ -1,9 +1,5 @@
 # 🎭 mock-react-redux
 
-> 🚧 This repository is still under evaluation!
-> We're not sure yet whether this is the approach we want to take.
-> If you have opinions, let us know!
-
 [![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 ![TypeScript: Strict](https://img.shields.io/badge/typescript-strict-brightgreen.svg)
 [![NPM version](https://badge.fury.io/js/mock-react-redux.svg)](http://badge.fury.io/js/mock-react-redux)
