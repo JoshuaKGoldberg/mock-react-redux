@@ -118,7 +118,7 @@ workflows:
           context: org-global
           filters:
             branches:
-              only: master
+              only: main
           requires:
             - tsc
       - prettier:
