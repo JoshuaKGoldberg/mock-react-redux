@@ -10,6 +10,12 @@ type MockSituation = {
 
 let mockSituation: MockSituation | undefined;
 
+const mockSupportedError = (name: string) => {
+  throw new Error(
+    `${name} is not yet supported when using mock-react-redux. Consider filing an issue on https://github.com/Codecademy/mock-react-redux. Thanks, friend!`,
+  );
+};
+
 const mockStateError = (name: string) => {
   throw new Error(
     `You imported mock-react-redux but didn't call mockReactRedux() before calling ${name} from react-redux.`,
@@ -40,11 +46,21 @@ jest.mock("react-redux", () => {
 
       return mockSituation.state;
     }),
-    Provider: () => {
-      throw new Error(`Provider is not supported when using mock-react-redux.`);
-    },
     useDispatch: getDispatch,
     useSelector: getSelector,
+    ...[
+      "batch",
+      "connectAdvanced",
+      "createDispatchHook",
+      "createSelectorHook",
+      "createStoreHook",
+      "Provider",
+      "shallowEqual",
+      "useStore",
+    ].reduce<Record<string, () => void>>((accum, apiName) => {
+      accum[apiName] = () => mockSupportedError(apiName);
+      return accum;
+    }, {}),
   };
 });
 
