@@ -61,7 +61,7 @@
     "tsc": "tsc --module commonjs"
   },
   "types": "src/index.d.ts",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "dependencies": {
     "@types/react": "^16.9.35",
     "@types/react-redux": "^7.1.9",
