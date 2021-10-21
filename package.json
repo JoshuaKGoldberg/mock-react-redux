@@ -43,7 +43,7 @@
   ],
   "license": "MIT",
   "lint-staged": {
-    "**/*.{js,json,ts,xml,yaml}": [
+    "**/*.{js,json,ts,xml,yml,yaml}": [
       "prettier --write"
     ]
   },
@@ -53,12 +53,13 @@
     "url": "git+https://github.com/Codecademy/mock-react-redux.git"
   },
   "scripts": {
-    "eslint": "eslint \"./src/*.ts\" \"./src/**/*.ts\" --report-unused-disable-directives",
-    "prettier": "prettier \"./*.{json,ts,yaml}\" \"./src/**/*.{json,ts,yaml}\"",
-    "prettier:write": "npm run prettier -- --write",
+    "compile": "tsc --module commonjs",
+    "format": "yarn prettier --write",
+    "format:verify": "yarn prettier --list-different \"**/*.{js,json,md,ts,yml}\"",
+    "format:write-all": "yarn format:verify --write",
+    "lint": "eslint \"./src/*.ts\" \"./src/**/*.ts\" --report-unused-disable-directives",
     "test": "jest",
-    "test:ci": "jest --maxWorkers=2",
-    "tsc": "tsc --module commonjs"
+    "test:ci": "jest --maxWorkers=2"
   },
   "types": "src/index.d.ts",
   "version": "0.4.0",
