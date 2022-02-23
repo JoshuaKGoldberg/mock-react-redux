@@ -100,6 +100,7 @@ See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./doc
 - The first `mock-react-redux` import _must_ come before the first `react-redux` import in your test files.
 - `.give` and `.giveMock` will only apply when selectors are passed directly to `useSelector` (e.g. `useSelector(selectValue)`).
   - See [FAQs](./docs/FAQs.md#help-my-give-selectors-arent-getting-mocked) for more tips and tricks.
+- Thunks often create new functions per dispatch that make `toBeCalledWith`-style checks difficult. See [the Thunks docs](./docs/Thunks.md) for details.
 
 ### Hybrid Usage
 
