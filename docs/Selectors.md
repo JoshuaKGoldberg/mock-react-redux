@@ -3,7 +3,7 @@
 ## Typical Setups
 
 [React function components](https://reactjs.org/docs/components-and-props.html) may read from Redux state using `react-redux`'s [`useSelector` hook](https://react-redux.js.org/api/hooks#useselector).
-Consider this simple Redux state shape containing a `title` of type `string`:
+Consider this Redux state shape containing a `title` of type `string`:
 
 ```tsx
 const initialState = {

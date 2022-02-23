@@ -3,7 +3,7 @@
 ## Typical Setups
 
 [React function components](https://reactjs.org/docs/components-and-props.html) may dispatch Redux actions using `react-redux`'s [`useDispatch` hook](https://react-redux.js.org/api/hooks#usedispatch).
-Consider this simple Redux state shape containing a `clicked` of type `boolean`:
+Consider this Redux state shape containing a `clicked` of type `boolean`:
 
 ```tsx
 const initialState = {
@@ -94,7 +94,7 @@ act(() => {
 expect(dispatch).toHaveBeenCalledWith(markClicked());
 ```
 
-Much simpler!
+Much cleaner!
 
 ## `dispatch`
 

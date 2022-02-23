@@ -51,7 +51,7 @@ See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/
 
 ```tsx
 mockReactRedux()
-  .give(simpleSelector, "Hooray!")
+  .give(valueSelector, "Hooray!")
   .giveMock(fancySelector, jest.fn().mockReturnValueOnce("Just the once."));
 ```
 
