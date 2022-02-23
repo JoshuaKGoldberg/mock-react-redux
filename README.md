@@ -3,7 +3,6 @@
 [![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 ![TypeScript: Strict](https://img.shields.io/badge/typescript-strict-brightgreen.svg)
 [![NPM version](https://badge.fury.io/js/mock-react-redux.svg)](http://badge.fury.io/js/mock-react-redux)
-[![Join the chat at https://gitter.im/Codecademy/mock-react-redux](https://badges.gitter.im/Codecademy/mock-react-redux.svg)](https://gitter.im/Codecademy/mock-react-redux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Mocks out Redux actions and selectors for clean React Jest tests.
 
