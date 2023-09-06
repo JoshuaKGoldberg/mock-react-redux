@@ -27,7 +27,7 @@ Most Redux-focused testing libraries aim to set up Redux logic in tests for your
 
 In a sense, other libraries tend to augment or swap out _Redux_:
 
-```
+```plaintext
 react <-----> react-redux <-----> redux
                                   |___|
                                     ^
@@ -37,7 +37,7 @@ react <-----> react-redux <-----> redux
 
 `mock-react-redux` completely swaps out _`react-redux`_, leaving your tests just testing the logic in your React components.
 
-```
+```plaintext
 react <-----> react-redux  ...
               |_________|
                    ^

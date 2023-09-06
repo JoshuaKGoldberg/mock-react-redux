@@ -119,7 +119,8 @@ See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./doc
 - The first `mock-react-redux` import _must_ come before the first `react-redux` import in your test files.
 - `.give` and `.giveMock` will only apply when selectors are passed directly to `useSelector` (e.g. `useSelector(selectValue)`).
   - See [FAQs](./docs/FAQs.md#help-my-give-selectors-arent-getting-mocked) for more tips and tricks.
-- Thunks often create new functions per dispatch that make `toBeCalledWith`-style checks difficult. See [the Thunks docs](./docs/Thunks.md) for details.
+- Thunks often create new functions per dispatch that make `toBeCalledWith`-style checks difficult.
+  See [the Thunks docs](./docs/Thunks.md) for details.
 
 ### Hybrid Usage
 
@@ -134,32 +135,10 @@ Only the test files that import `mock-react-redux` will have `react-redux` stubb
 - `.give` return values must match the return types of their selectors.
 - `.giveMock` mocks must match the return types of their selectors.
 
-_Heck yes._ 🤘
-
 ## Development
 
-Requires:
-
-- [Node.js](https://nodejs.org) >12
-- [Yarn](https://yarnpkg.com/en)
-
-After [forking the repo from GitHub](https://help.github.com/articles/fork-a-repo):
-
-```
-git clone https://github.com/<your-name-here>/mock-react-redux
-cd mock-react-redux
-yarn
-```
-
-### Contribution Guidelines
-
-We'd love to have you contribute!
-Check the [issue tracker](https://github.com/Codecademy/mock-react-redux/issues) for issues labeled [`accepting prs`](https://github.com/Codecademy/mock-react-redux/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22accepting+prs%22) to find bug fixes and feature requests the community can work on.
-If this is your first time working with this code, the [`good first issue`](https://github.com/Codecademy/mock-react-redux/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+) label indicates good introductory issues.
-
-Please note that this project is released with a [Contributor Covenant](https://www.contributor-covenant.org).
-By participating in this project you agree to abide by its terms.
-See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
+See [`.github/CONTRIBUTING.md`](./.github/CONTRIBUTING.md), then [`.github/DEVELOPMENT.md`](./.github/DEVELOPMENT.md).
+Thanks! 💖
 
 ## Contributors
 
@@ -183,10 +162,4 @@ See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md).
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- spellchecker: enable -->
 
-<!-- You can remove this notice if you don't want it 🙂 no worries! -->
-
-> 💙 This package is based on [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)'s [mock-react-redux](https://github.com/JoshuaKGoldberg/mock-react-redux).
-
-<!-- You can remove this notice if you don't want it 🙂 no worries! -->
-
-> 💙 This package is based on [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)'s [mock-react-redux](https://github.com/JoshuaKGoldberg/mock-react-redux).
+> 💙 This package is based on [@JoshuaKGoldberg](https://github.com/JoshuaKGoldberg)'s [create-typescript-app](https://github.com/JoshuaKGoldberg/create-typescript-app).
