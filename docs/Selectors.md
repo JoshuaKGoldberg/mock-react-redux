@@ -7,7 +7,7 @@ Consider this Redux state shape containing a `title` of type `string`:
 
 ```tsx
 const initialState = {
-  title: "",
+	title: "",
 };
 ```
 
@@ -21,9 +21,9 @@ Your view code might use that selector to render the title:
 
 ```tsx
 const Heading = () => {
-  const title = useSelector(selectTitle);
+	const title = useSelector(selectTitle);
 
-  return <h1>{title}</h1>;
+	return <h1>{title}</h1>;
 };
 ```
 
@@ -33,12 +33,12 @@ You _could_ set up Redux state with a full state tree:
 
 ```tsx
 const testState = {
-  title: "Test Title",
+	title: "Test Title",
 };
 
 // Renders <h1>Test Title</h1>
 <Provider store={configureStore()(testState)}>
-  <Heading />
+	<Heading />
 </Provider>;
 ```
 
@@ -60,7 +60,7 @@ That state will be provided to selectors called by `useSelector`.
 
 ```tsx
 mockReactRedux().state({
-  title: "Test Title",
+	title: "Test Title",
 });
 
 // Renders <h1>Test Title</h1>
@@ -103,18 +103,18 @@ For example, you might want the selector to return a different value than the fi
 
 ```tsx
 mockReactRedux().giveMock(
-  selectTitle,
-  jest
-    .fn()
-    .mockReturnValueOnce("First!")
-    .mockReturnValueOnce("Second.")
-    .mockReturnValue("Other times..."),
+	selectTitle,
+	jest
+		.fn()
+		.mockReturnValueOnce("First!")
+		.mockReturnValueOnce("Second.")
+		.mockReturnValue("Other times..."),
 );
 ```
 
 See [Jest's mock functions](https://jestjs.io/docs/en/mock-functions.html) for full documentation.
 
-> See [FAQs](./FAQs.md) for help choosing between these strategies and pracices for mocking selectors.
+> See [FAQs](./FAQs.md) for help choosing between these strategies and practices for mocking selectors.
 
 ## Examples
 

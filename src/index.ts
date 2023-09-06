@@ -1,6 +1,6 @@
-import { mockReactRedux } from "./mockReactRedux";
+import { mockReactRedux } from "./mockReactRedux.js";
 
-export * from "./types";
+export * from "./types.js";
 
 export { mockReactRedux };
 

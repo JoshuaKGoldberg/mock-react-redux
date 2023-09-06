@@ -7,9 +7,9 @@ Consider this Redux state shape containing a `clicked` of type `boolean`:
 
 ```tsx
 const initialState = {
-  interactions: {
-    clicked: false,
-  },
+	interactions: {
+		clicked: false,
+	},
 };
 ```
 
@@ -25,14 +25,14 @@ const markClicked = () => ({ type: MARK_CLICKED });
 
 ```tsx
 switch (action.type) {
-  case MARK_CLICKED:
-    return {
-      ...state,
-      interactions: {
-        ...state.interactions,
-        clicked: true,
-      },
-    };
+	case MARK_CLICKED:
+		return {
+			...state,
+			interactions: {
+				...state.interactions,
+				clicked: true,
+			},
+		};
 }
 ```
 
@@ -40,13 +40,13 @@ Your view code might dispatch an action to set `clicked` to `true`:
 
 ```tsx
 const Clicker = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  return (
-    <button onClick={() => dispatch(markClicked())} type="button">
-      Click me!
-    </button>
-  );
+	return (
+		<button onClick={() => dispatch(markClicked())} type="button">
+			Click me!
+		</button>
+	);
 };
 ```
 
@@ -56,19 +56,19 @@ You _could_ set up Redux state with a full state tree:
 
 ```tsx
 const store = configureStore()({
-  interactions: {
-    clicked: false,
-  },
+	interactions: {
+		clicked: false,
+	},
 });
 
 const view = render(
-  <Provider store={store}>
-    <Clicker />
-  </Provider>,
+	<Provider store={store}>
+		<Clicker />
+	</Provider>,
 );
 
 act(() => {
-  fireEvent.click(view.getByRole("button"));
+	fireEvent.click(view.getByRole("button"));
 });
 
 expect(store.actions()).toEqual([markClicked()]);
@@ -88,7 +88,7 @@ const { dispatch } = mockReactRedux();
 const view = render(<Clicker />);
 
 act(() => {
-  fireEvent.click(view.getByRole("button"));
+	fireEvent.click(view.getByRole("button"));
 });
 
 expect(dispatch).toHaveBeenCalledWith(markClicked());
@@ -105,7 +105,7 @@ If you'd like to execute some logic when actions are dispatched, you can use Jes
 
 ```tsx
 dispatch.mockImplementation((action) => {
-  console.log("Received", action);
+	console.log("Received", action);
 });
 ```
 

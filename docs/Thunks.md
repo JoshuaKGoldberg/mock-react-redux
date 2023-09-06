@@ -11,11 +11,11 @@ A thunk might look something like one of these functions that each return a func
 
 ```ts
 export const makeCall = () => (dispatch, getState) => {
-  /* ... */
+	/* ... */
 };
 
 export const makeCallWith = (value) => (dispatch, getState) => {
-  /* ... */
+	/* ... */
 };
 ```
 
@@ -36,7 +36,7 @@ One solution would be to make a function that stays the same between them:
 
 ```ts
 export const makeCallThunk = (dispatch, getState) => {
-  /* ... */
+	/* ... */
 };
 
 export const makeCall = () => makeCallThunk;
@@ -58,15 +58,15 @@ If you want to support parameters, you could use something like [Lodash's memoiz
 import { memoize } from "lodash";
 
 export const makeCallWith = memoize((value) => {
-  return (dispatch, getState) => {
-    /* ... */
-  };
+	return (dispatch, getState) => {
+		/* ... */
+	};
 });
 ```
 
 ```ts
 const value = {
-  /* ... */
+	/* ... */
 };
 
 dispatch(makeCallWith(value));

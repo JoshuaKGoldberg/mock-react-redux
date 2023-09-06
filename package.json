@@ -1,72 +1,118 @@
 {
-  "author": "Codecademy",
-  "description": "Mocks out Redux actions and selectors for clean React Jest tests.",
-  "devDependencies": {
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/preset-typescript": "^7.9.0",
-    "@testing-library/react": "^10.0.4",
-    "@types/jest": "^25.2.3",
-    "@types/lodash.mapvalues": "^4.6.6",
-    "@types/redux-mock-store": "^1.0.2",
-    "@types/testing-library__react": "^10.0.1",
-    "@typescript-eslint/eslint-plugin": "3.0.0",
-    "@typescript-eslint/parser": "^3.0.0",
-    "babel-jest": "^26.0.1",
-    "eslint": "^7.1.0",
-    "eslint-config-prettier": "^6.11.0",
-    "husky": "^4.2.5",
-    "jest": "^26.0.1",
-    "lint-staged": "^10.2.6",
-    "lodash": "^4.17.21",
-    "prettier": "^2.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "typescript": "^3.9.3"
-  },
-  "main": "src/index.js",
-  "homepage": "https://github.com/Codecademy/mock-react-redux#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "keywords": [
-    "mock",
-    "redux",
-    "jest",
-    "tests",
-    "spies",
-    "dispatch",
-    "selectors",
-    "hooks"
-  ],
-  "license": "MIT",
-  "lint-staged": {
-    "**/*.{js,json,ts,xml,yml,yaml}": [
-      "prettier --write"
-    ]
-  },
-  "name": "mock-react-redux",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Codecademy/mock-react-redux.git"
-  },
-  "scripts": {
-    "compile": "tsc --module commonjs",
-    "format": "yarn prettier --write",
-    "format:verify": "yarn prettier --list-different \"**/*.{js,json,md,ts,yml}\"",
-    "format:write-all": "yarn format:verify --write",
-    "lint": "eslint \"./src/*.ts\" \"./src/**/*.ts\" --report-unused-disable-directives",
-    "test": "jest",
-    "test:ci": "jest --maxWorkers=2"
-  },
-  "types": "src/index.d.ts",
-  "version": "0.4.0",
-  "dependencies": {
-    "@types/react": "^16.9.35",
-    "@types/react-redux": "^7.1.9",
-    "lodash.mapvalues": "^4.6.0"
-  }
+	"name": "mock-react-redux",
+	"version": "0.0.0",
+	"description": "Mocks out Redux actions and selectors for clean React Jest tests. 🎭",
+	"keywords": [
+		"mock",
+		"redux",
+		"jest",
+		"tests",
+		"spies",
+		"dispatch",
+		"selectors",
+		"hooks"
+	],
+	"homepage": "https://github.com/Codecademy/mock-react-redux#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JoshuaKGoldberg/mock-react-redux"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "JoshuaKGoldberg",
+		"email": "npm@joshuakgoldberg.com"
+	},
+	"type": "module",
+	"main": "./lib/index.js",
+	"files": [
+		"lib/",
+		"package.json",
+		"LICENSE.md",
+		"README.md"
+	],
+	"scripts": {
+		"build": "tsup",
+		"format": "prettier \"**/*\" --ignore-unknown",
+		"format:write": "pnpm format --write",
+		"lint": "eslint . .*js --max-warnings 0 --report-unused-disable-directives",
+		"lint:knip": "knip",
+		"lint:md": "markdownlint \"**/*.md\" \".github/**/*.md\" --rules sentences-per-line",
+		"lint:package-json": "npmPkgJsonLint .",
+		"lint:packages": "pnpm dedupe --check",
+		"lint:spelling": "cspell \"**\" \".github/**/*\"",
+		"prepare": "husky install",
+		"should-semantic-release": "should-semantic-release --verbose",
+		"test": "jest",
+		"tsc": "tsc"
+	},
+	"lint-staged": {
+		"*": "prettier --ignore-unknown --write"
+	},
+	"dependencies": {
+		"@types/react": "^16.9.35",
+		"@types/react-redux": "^7.1.9",
+		"lodash.mapvalues": "^4.6.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.22.15",
+		"@babel/preset-env": "^7.22.15",
+		"@babel/preset-react": "^7.22.15",
+		"@babel/preset-typescript": "^7.22.15",
+		"@testing-library/react": "^10.0.4",
+		"@types/eslint": "^8.44.2",
+		"@types/jest": "^25.2.3",
+		"@types/lodash.mapvalues": "^4.6.6",
+		"@types/node": "^20.5.9",
+		"@types/react-dom": "^18.2.7",
+		"@types/redux-mock-store": "^1.0.2",
+		"@typescript-eslint/eslint-plugin": "6.6.0",
+		"@typescript-eslint/parser": "^6.6.0",
+		"babel-jest": "^29.6.4",
+		"console-fail-test": "^0.2.3",
+		"cspell": "^7.3.2",
+		"eslint": "^8.48.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-deprecation": "^1.5.0",
+		"eslint-plugin-eslint-comments": "^3.2.0",
+		"eslint-plugin-import": "^2.28.1",
+		"eslint-plugin-jest": "^27.2.3",
+		"eslint-plugin-jsdoc": "^46.5.1",
+		"eslint-plugin-jsonc": "^2.9.0",
+		"eslint-plugin-markdown": "^3.0.1",
+		"eslint-plugin-n": "^16.0.2",
+		"eslint-plugin-no-only-tests": "^3.1.0",
+		"eslint-plugin-perfectionist": "^1.5.1",
+		"eslint-plugin-regexp": "^1.15.0",
+		"eslint-plugin-yml": "^1.8.0",
+		"husky": "^8.0.3",
+		"jest": "^29.6.4",
+		"jest-environment-jsdom": "^29.6.4",
+		"jsonc-eslint-parser": "^2.3.0",
+		"knip": "^2.21.2",
+		"lint-staged": "^14.0.1",
+		"lodash": "^4.17.21",
+		"markdownlint": "^0.30.0",
+		"markdownlint-cli": "^0.36.0",
+		"npm-package-json-lint": "^7.0.0",
+		"npm-package-json-lint-config-default": "^6.0.0",
+		"prettier": "^3.0.3",
+		"prettier-plugin-curly": "^0.1.3",
+		"prettier-plugin-packagejson": "^2.4.5",
+		"react": "^16.13.1",
+		"react-dom": "link:react-dom",
+		"react-redux": "^7.2.0",
+		"release-it": "^16.1.5",
+		"sentences-per-line": "^0.2.1",
+		"should-semantic-release": "^0.1.1",
+		"tsup": "^7.2.0",
+		"typescript": "^5.2.2",
+		"yaml-eslint-parser": "^1.2.2"
+	},
+	"packageManager": "pnpm@8.7.0",
+	"engines": {
+		"node": ">=18"
+	},
+	"publishConfig": {
+		"provenance": true
+	}
 }

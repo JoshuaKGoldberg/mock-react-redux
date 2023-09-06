@@ -9,7 +9,7 @@ Take everything here with a grain of salt.
 
 `mock-react-redux` is excellent for separating your React and Redux logic areas.
 Many applications intentionally try to independently test the two areas.
-This approach is particularily effective in applications that do some or all of:
+This approach is particularly effective in applications that do some or all of:
 
 - Keep a large amount of data in their Redux state and/or share pieces of that state among multiple components
 - Test Redux logic (actions, selectors, and/or reducers) in isolation from React components
@@ -54,7 +54,7 @@ The entire `react-redux` module is replaced with `mock-react-redux` logic, so yo
   - Calls a predefined mock if you've defined a return value with `.give` or mock with `.giveMock` for that selector
   - Otherwise passes the state you defined for the test to that selector
 - `useDispatch` returns the same mock created by a `jest.fn()` and returned as a member of `fetchMock()`
-- `connect` mimicks `react-redux` but using the above mock logic
+- `connect` mimics `react-redux` but using the above mock logic
 
 ## Should I Mock State or Mock Selectors?
 

@@ -1,7 +1,6 @@
 {
-  "moduleFileExtensions": ["tsx", "ts", "js"],
-  "moduleNameMapper": {
-    "^mock-react-redux$": "<rootDir>/src/index"
-  },
-  "testRegex": ["\\.test\\.tsx?$"]
+	"moduleFileExtensions": ["tsx", "ts", "js"],
+	"testEnvironment": "jsdom",
+	"testRegex": ["\\.test\\.tsx?$"],
+	"setupFilesAfterEnv": ["console-fail-test/setup.js"]
 }
