@@ -1,3 +1,5 @@
+import type * as jest from "jest";
+
 import { mockConnect } from "./connect.js";
 import { GetSelector, createGetSelector } from "./selectors.js";
 import { AnySelector, MockReactRedux } from "./types.js";

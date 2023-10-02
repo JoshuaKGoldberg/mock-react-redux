@@ -1,3 +1,5 @@
+import type * as jest from "jest";
+
 /**
  * Test APIs to modify the mocked react-redux hooks' behavior.
  */

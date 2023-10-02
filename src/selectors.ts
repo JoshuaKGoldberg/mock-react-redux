@@ -1,3 +1,5 @@
+import type * as jest from "jest";
+
 import { AnySelector } from "./types.js";
 
 export type GetSelector = <ReturnValue>(

@@ -1,3 +1,4 @@
+import type * as jest from "jest";
 import type { MapDispatchToProps, MapStateToProps } from "react-redux";
 
 import mapValues from "lodash.mapvalues";

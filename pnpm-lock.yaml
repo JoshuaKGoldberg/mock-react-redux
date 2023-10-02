@@ -21,10 +21,13 @@ devDependencies:
     version: 7.0.2(release-it@16.2.1)
   '@testing-library/react':
     specifier: ^10.0.4
-    version: 10.4.9(react-dom@react-dom)(react@16.14.0)
+    version: 10.4.9(react-dom@18.2.0)(react@16.14.0)
   '@types/eslint':
     specifier: ^8.44.3
     version: 8.44.3
+  '@types/jest':
+    specifier: ^29.5.5
+    version: 29.5.5
   '@types/lodash.mapvalues':
     specifier: ^4.6.6
     version: 4.6.7
@@ -126,10 +129,10 @@ devDependencies:
     version: 16.14.0
   react-dom:
     specifier: link:react-dom
-    version: link:react-dom
+    version: 18.2.0(react@16.14.0)
   react-redux:
     specifier: ^7.2.0
-    version: 7.2.9(react-dom@react-dom)(react@16.14.0)
+    version: 7.2.9(react-dom@18.2.0)(react@16.14.0)
   release-it:
     specifier: ^16.2.1
     version: 16.2.1(typescript@5.2.2)
@@ -1707,7 +1710,7 @@ packages:
       pretty-format: 26.6.2
     dev: true
 
-  /@testing-library/react@10.4.9(react-dom@react-dom)(react@16.14.0):
+  /@testing-library/react@10.4.9(react-dom@18.2.0)(react@16.14.0):
     resolution: {integrity: sha512-pHZKkqUy0tmiD81afs8xfiuseXfU/N7rAX3iKjeZYje86t9VaB0LrxYVa+OOsvkrveX5jCK3IjajVn2MbePvqA==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -1717,7 +1720,7 @@ packages:
       '@babel/runtime': 7.22.15
       '@testing-library/dom': 7.31.2
       react: 16.14.0
-      react-dom: link:react-dom
+      react-dom: 18.2.0(react@16.14.0)
     dev: true
 
   /@tootallnate/quickjs-emscripten@0.23.0:
@@ -1798,6 +1801,13 @@ packages:
     resolution: {integrity: sha512-c3mAZEuK0lvBp8tmuL74XRKn1+y2dcwOUpH7x4WrF6gk1GIgiluDRgMYQtw2OFcBvAJWlt6ASU3tSqxp0Uu0Aw==}
     dependencies:
       '@types/istanbul-lib-report': 3.0.0
+    dev: true
+
+  /@types/jest@29.5.5:
+    resolution: {integrity: sha512-ebylz2hnsWR9mYvmBFbXJXr+33UPc4+ZdxyDXh5w0FlPBTfCVN3wPL+kuOiQt3xvrK419v7XWeAs+AeOksafXg==}
+    dependencies:
+      expect: 29.7.0
+      pretty-format: 29.7.0
     dev: true
 
   /@types/json-schema@7.0.12:
@@ -6767,6 +6777,16 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
+  /react-dom@18.2.0(react@16.14.0):
+    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      loose-envify: 1.4.0
+      react: 16.14.0
+      scheduler: 0.23.0
+    dev: true
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -6778,7 +6798,7 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
 
-  /react-redux@7.2.9(react-dom@react-dom)(react@16.14.0):
+  /react-redux@7.2.9(react-dom@18.2.0)(react@16.14.0):
     resolution: {integrity: sha512-Gx4L3uM182jEEayZfRbI/G11ZpYdNAnBs70lFVMNdHJI76XYtR+7m0MN+eAs7UHBPhWXcnFPaS+9owSCJQHNpQ==}
     peerDependencies:
       react: ^16.8.3 || ^17 || ^18
@@ -6796,7 +6816,7 @@ packages:
       loose-envify: 1.4.0
       prop-types: 15.8.1
       react: 16.14.0
-      react-dom: link:react-dom
+      react-dom: 18.2.0(react@16.14.0)
       react-is: 17.0.2
     dev: true
 
@@ -7133,6 +7153,12 @@ packages:
 
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+    dev: true
+
+  /scheduler@0.23.0:
+    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+    dependencies:
+      loose-envify: 1.4.0
     dev: true
 
   /scslre@0.2.0:

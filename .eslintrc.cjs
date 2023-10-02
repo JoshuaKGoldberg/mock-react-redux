@@ -99,6 +99,7 @@ module.exports = {
 				// These on-by-default rules aren't useful in test files.
 				"@typescript-eslint/no-unsafe-assignment": "off",
 				"@typescript-eslint/no-unsafe-call": "off",
+				"jest/expect-expect": "off",
 			},
 		},
 		{
