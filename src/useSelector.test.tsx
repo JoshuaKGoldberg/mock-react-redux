@@ -1,5 +1,7 @@
-import { mockReactRedux } from "./index.js";
+import { describe, it } from "@jest/globals";
 import { useSelector } from "react-redux";
+
+import { mockReactRedux } from "./index.js";
 
 type TestState = {
 	value: string;
@@ -9,7 +11,7 @@ const selectTestValue = (state: TestState) => state.value;
 
 describe("useSelector", () => {
 	it("throws an error when mockReactRedux was not previously called", () => {
-		expect(() => useSelector(selectTestValue)).toThrowError(
+		expect(() => useSelector(selectTestValue)).toThrow(
 			`You imported mock-react-redux but didn't call mockReactRedux() before calling useSelector from react-redux.`,
 		);
 	});
@@ -17,7 +19,7 @@ describe("useSelector", () => {
 	it("throws an error when a named selector has not been given a return or mock and mock state has not been set", () => {
 		mockReactRedux();
 
-		expect(() => useSelector(selectTestValue)).toThrowError(
+		expect(() => useSelector(selectTestValue)).toThrow(
 			`No Redux state or mock defined for 'selectTestValue'`,
 		);
 	});
@@ -25,7 +27,7 @@ describe("useSelector", () => {
 	it("throws an error when an anonymous selector has not been given a return or mock and mock state has not been set", () => {
 		mockReactRedux();
 
-		expect(() => useSelector(() => true)).toThrowError(
+		expect(() => useSelector(() => true)).toThrow(
 			`No Redux state or mock defined for '() => true'`,
 		);
 	});
@@ -68,7 +70,7 @@ describe("useSelector", () => {
 
 			give(selectTestValue, "");
 
-			expect(() => give(selectTestValue, "")).toThrowError(
+			expect(() => give(selectTestValue, "")).toThrow(
 				"Attempted to provide a second mock for 'selectTestValue'",
 			);
 		});
@@ -82,7 +84,7 @@ describe("useSelector", () => {
 
 			give(selector, "");
 
-			expect(() => give(selector, "")).toThrowError(
+			expect(() => give(selector, "")).toThrow(
 				`Attempted to provide a second mock for '() => ""'`,
 			);
 		});
@@ -125,7 +127,7 @@ describe("useSelector", () => {
 				jest.fn(() => ""),
 			);
 
-			expect(() => giveMock(selectTestValue, jest.fn())).toThrowError(
+			expect(() => giveMock(selectTestValue, jest.fn())).toThrow(
 				"Attempted to provide a second mock for 'selectTestValue'",
 			);
 		});
