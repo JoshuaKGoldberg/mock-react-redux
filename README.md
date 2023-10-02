@@ -6,7 +6,7 @@
 	<a href="#contributors" target="_blank">
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<img alt="All Contributors: 3" src="https://img.shields.io/badge/all_contributors-3-21bb42.svg" />
+<img alt="All Contributors: 3 👪" src="https://img.shields.io/badge/all_contributors-3_👪-21bb42.svg" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 	</a>
@@ -32,7 +32,7 @@ Use this package if you'd like your React component tests to not take dependenci
 
 ## Usage
 
-```js
+```ts
 import { mockReactRedux } from "mock-react-redux";
 
 mockReactRedux();

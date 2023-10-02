@@ -7,11 +7,10 @@ module.exports = {
 	extends: [
 		"eslint:recommended",
 		"plugin:eslint-comments/recommended",
-		"plugin:jest/recommended",
 		"plugin:n/recommended",
 		"plugin:perfectionist/recommended-natural",
 		"plugin:regexp/recommended",
-		"prettier",
+		"plugin:jest/recommended",
 	],
 	overrides: [
 		{
@@ -42,6 +41,16 @@ module.exports = {
 				"jsdoc/require-param": "off",
 				"jsdoc/require-property": "off",
 				"jsdoc/require-returns": "off",
+
+				// TODO
+				"@typescript-eslint/no-explicit-any": "off",
+			},
+		},
+		{
+			files: "**/*.md/*.ts",
+			rules: {
+				"@typescript-eslint/no-unused-vars": "off",
+				"jest/no-standalone-expect": "off",
 			},
 		},
 		{
@@ -59,21 +68,14 @@ module.exports = {
 				// These off-by-default rules work well for this repo and we like them on.
 				"deprecation/deprecation": "error",
 
-				// TODO: Investigate enabling these?
+				// TODO
 				"@typescript-eslint/no-explicit-any": "off",
 				"@typescript-eslint/no-unsafe-argument": "off",
 				"@typescript-eslint/no-unsafe-assignment": "off",
 				"@typescript-eslint/no-unsafe-call": "off",
+				"@typescript-eslint/no-unsafe-member-access": "off",
 				"@typescript-eslint/no-unsafe-return": "off",
 				"@typescript-eslint/restrict-template-expressions": "off",
-			},
-		},
-		{
-			files: ["**/*.md/*.ts"],
-			rules: {
-				// Documentation snippets intentionally show unused locals/parameters
-				"@typescript-eslint/no-unused-vars": "off",
-				"jest/no-standalone-expect": "off",
 			},
 		},
 		{
@@ -99,7 +101,6 @@ module.exports = {
 				"@typescript-eslint/no-unsafe-call": "off",
 			},
 		},
-
 		{
 			extends: ["plugin:yml/standard", "plugin:yml/prettier"],
 			files: ["**/*.{yml,yaml}"],
@@ -127,19 +128,17 @@ module.exports = {
 	plugins: [
 		"@typescript-eslint",
 		"deprecation",
-		"import",
-		"jest",
 		"jsdoc",
 		"no-only-tests",
 		"perfectionist",
 		"regexp",
+		"jest",
 	],
 	reportUnusedDisableDirectives: true,
 	root: true,
 	rules: {
 		// These off/less-strict-by-default rules work well for this repo and we like them on.
 		"@typescript-eslint/no-unused-vars": ["error", { caughtErrors: "all" }],
-		"import/extensions": ["error", "ignorePackages"],
 		"no-only-tests/no-only-tests": "error",
 
 		// These on-by-default rules don't work well for this repo and we like them off.
@@ -147,6 +146,7 @@ module.exports = {
 		"no-case-declarations": "off",
 		"no-constant-condition": "off",
 		"no-inner-declarations": "off",
+		"no-mixed-spaces-and-tabs": "off",
 
 		// Stylistic concerns that don't interfere with Prettier
 		"@typescript-eslint/padding-line-between-statements": [

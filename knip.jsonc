@@ -1,13 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@latest/schema.json",
 	"entry": ["src/index.ts!"],
-	"ignoreDependencies": [
-		"@babel/core",
-		"@babel/preset-env",
-		"@babel/preset-react",
-		"@babel/preset-typescript",
-		"babel-jest"
-	],
 	"ignoreExportsUsedInFile": { "interface": true, "type": true },
-	"project": ["src/**/*.ts!"]
+	"project": ["src/**/*.ts*!"]
 }

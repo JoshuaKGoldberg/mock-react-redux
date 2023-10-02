@@ -1,36 +1,45 @@
 {
-	"badgeTemplate": "<img alt=\"All Contributors: <%= contributors.length %>\" src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-21bb42.svg\" />",
-	"commit": false,
-	"commitConvention": "angular",
-	"contributors": [
-		{
-			"login": "gitter-badger",
-			"name": "The Gitter Badger",
-			"avatar_url": "https://avatars.githubusercontent.com/u/8518239?v=4",
-			"profile": "https://gitter.im/",
-			"contributions": ["code"]
-		},
-		{
-			"login": "jenesh",
-			"name": "Jenesh Napit",
-			"avatar_url": "https://avatars.githubusercontent.com/u/47792836?v=4",
-			"profile": "https://github.com/jenesh",
-			"contributions": ["code"]
-		},
-		{
-			"login": "JoshuaKGoldberg",
-			"name": "Josh Goldberg ✨",
-			"avatar_url": "https://avatars.githubusercontent.com/u/3335181?v=4",
-			"profile": "http://www.joshuakgoldberg.com/",
-			"contributions": ["code", "maintenance"]
-		}
-	],
-	"contributorsPerLine": 7,
-	"contributorsSortAlphabetically": true,
-	"files": ["README.md"],
-	"imageSize": 100,
-	"projectName": "mock-react-redux",
-	"projectOwner": "JoshuaKGoldberg",
-	"repoHost": "https://github.com",
-	"repoType": "github"
+  "badgeTemplate": "<img alt=\"All Contributors: <%= contributors.length %> 👪\" src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>_👪-21bb42.svg\" />",
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "gitter-badger",
+      "name": "The Gitter Badger",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8518239?v=4",
+      "profile": "https://gitter.im/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jenesh",
+      "name": "Jenesh Napit",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47792836?v=4",
+      "profile": "https://github.com/jenesh",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JoshuaKGoldberg",
+      "name": "Josh Goldberg ✨",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3335181?v=4",
+      "profile": "http://www.joshuakgoldberg.com/",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "contributorsSortAlphabetically": true,
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "projectName": "mock-react-redux",
+  "projectOwner": "JoshuaKGoldberg",
+  "repoHost": "https://github.com",
+  "repoType": "github"
 }

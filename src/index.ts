@@ -4,4 +4,5 @@ export * from "./types.js";
 
 export { mockReactRedux };
 
+/** @alias {mockReactRedux} */
 export default mockReactRedux;
