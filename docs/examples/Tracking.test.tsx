@@ -4,7 +4,7 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 type RootState = {
-  clicks: number;
+	clicks: number;
 };
 
 const MARK_CLICKED = "MARK_CLICKED";
@@ -14,40 +14,40 @@ const markClicked = () => ({ type: MARK_CLICKED });
 const selectClicks = (state: RootState) => state.clicks;
 
 const Tracking = () => {
-  const clicks = useSelector(selectClicks);
-  const dispatch = useDispatch();
+	const clicks = useSelector(selectClicks);
+	const dispatch = useDispatch();
 
-  return (
-    <button onClick={() => dispatch(markClicked())} type="button">
-      This button has been clicked {clicks} time{clicks === 1 ? "" : "s"}.
-    </button>
-  );
+	return (
+		<button onClick={() => dispatch(markClicked())} type="button">
+			This button has been clicked {clicks} time{clicks === 1 ? "" : "s"}.
+		</button>
+	);
 };
 
 describe(Tracking, () => {
-  it("renders a singular message when it has been clicked 1 time", () => {
-    mockReactRedux().give(selectClicks, 1);
+	it("renders a singular message when it has been clicked 1 time", () => {
+		mockReactRedux().give(selectClicks, 1);
 
-    const view = render(<Tracking />);
+		const view = render(<Tracking />);
 
-    view.getByText("This button has been clicked 1 time.");
-  });
+		view.getByText("This button has been clicked 1 time.");
+	});
 
-  it("renders a plural message when it has been clicked 2 times", () => {
-    mockReactRedux().state({ clicks: 2 });
+	it("renders a plural message when it has been clicked 2 times", () => {
+		mockReactRedux().state({ clicks: 2 });
 
-    const view = render(<Tracking />);
+		const view = render(<Tracking />);
 
-    view.getByText("This button has been clicked 2 times.");
-  });
+		view.getByText("This button has been clicked 2 times.");
+	});
 
-  it("dispatches the markClicked event when clicked", () => {
-    const { dispatch } = mockReactRedux().give(selectClicks, 1);
+	it("dispatches the markClicked event when clicked", () => {
+		const { dispatch } = mockReactRedux().give(selectClicks, 1);
 
-    const view = render(<Tracking />);
+		const view = render(<Tracking />);
 
-    fireEvent.click(view.getByRole("button"));
+		fireEvent.click(view.getByRole("button"));
 
-    expect(dispatch).toHaveBeenCalledWith(markClicked());
-  });
+		expect(dispatch).toHaveBeenCalledWith(markClicked());
+	});
 });

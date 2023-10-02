@@ -3,6 +3,6 @@
 // Kind of cool, right? 🤗
 
 declare module "mock-react-redux" {
-  const _: typeof import("../../src/index");
-  export = _;
+	const _: typeof import("../../src/index");
+	export = _;
 }
