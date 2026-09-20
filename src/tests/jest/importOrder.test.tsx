@@ -1,5 +1,6 @@
 import "react-redux";
 import { mockReactRedux } from "mock-react-redux";
+import { describe, expect, it } from "vitest";
 
 describe("mockReactRedux", () => {
   it("throws an error when required after react-redux", async () => {

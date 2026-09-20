@@ -93,18 +93,18 @@ mockReactRedux().give(selectTitle, "Test Title");
 
 ### `giveMock`
 
-If you'd like more control over the return values, use `.giveMock` to provide a [Jest mock](https://jestjs.io/docs/en/mock-functions.html).
+If you'd like more control over the return values, use `.giveMock` to provide a mock function such as [`jest.fn()`](https://jestjs.io/docs/en/mock-functions.html) or [`vi.fn()`](https://vitest.dev/api/vi.html#vi-fn).
 It takes two parameters:
 
 - `selector`: Selector function to mock out return values for
-- `mock`: Jest mock function to call in place of the selector
+- `mock`: Mock function to call in place of the selector
 
 For example, you might want the selector to return a different value than the first on subsequent calls:
 
 ```tsx
 mockReactRedux().giveMock(
   selectTitle,
-  jest
+  vi
     .fn()
     .mockReturnValueOnce("First!")
     .mockReturnValueOnce("Second.")
@@ -112,7 +112,7 @@ mockReactRedux().giveMock(
 );
 ```
 
-See [Jest's mock functions](https://jestjs.io/docs/en/mock-functions.html) for full documentation.
+See [Jest's mock functions](https://jestjs.io/docs/en/mock-functions.html) or [Vitest's `vi.fn`](https://vitest.dev/api/vi.html#vi-fn) for full documentation.
 
 > See [FAQs](./FAQs.md) for help choosing between these strategies and pracices for mocking selectors.
 

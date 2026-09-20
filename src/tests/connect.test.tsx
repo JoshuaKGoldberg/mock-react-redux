@@ -1,8 +1,9 @@
 import { render } from "@testing-library/react";
-import { mockReactRedux } from "mock-react-redux";
+import { mockReactRedux, MockFunction } from "mock-react-redux";
 import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
 import { connect } from "react-redux";
+import { describe, expect, it, vi } from "vitest";
 
 const value = "Hi!";
 const payload = { value };
@@ -102,7 +103,7 @@ describe("connect", () => {
 
   describe("mergeProps", () => {
     type TracksPropsProps = Record<string, unknown> & {
-      spy: jest.Mock;
+      spy: MockFunction;
     };
 
     const TracksProps = (props: TracksPropsProps) => {
@@ -119,7 +120,7 @@ describe("connect", () => {
     const mapDispatchToProps = { fromDispatch };
 
     it("defaults to a basic merge when not provided", () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       const ConnectedTracksProps = connect(mapStateToProps, mapDispatchToProps)(TracksProps);
 
       mockReactRedux().state({});
@@ -136,7 +137,7 @@ describe("connect", () => {
     });
 
     it("is used when provided", () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       const ConnectedTracksProps = connect(
         mapStateToProps,
         mapDispatchToProps,

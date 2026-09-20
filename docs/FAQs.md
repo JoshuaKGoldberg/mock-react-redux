@@ -47,13 +47,13 @@ react <-----> react-redux  ...
 
 ## How Does `mock-react-redux` Work?
 
-[Jest module mocks](https://jestjs.io/docs/en/mock-functions#mocking-modules).
+Module mocks: [`jest.mock`](https://jestjs.io/docs/en/mock-functions#mocking-modules) under Jest, or [`vi.mock`](https://vitest.dev/api/vi.html#vi-mock) under Vitest.
 The entire `react-redux` module is replaced with `mock-react-redux` logic, so your React components only ever interact with mocked versions of `connect`, `useSelector`, and `useDispatch`.
 
 - `useSelector` is replaced by a function that:
   - Calls a predefined mock if you've defined a return value with `.give` or mock with `.giveMock` for that selector
   - Otherwise passes the state you defined for the test to that selector
-- `useDispatch` returns the same mock created by a `jest.fn()` and returned as a member of `fetchMock()`
+- `useDispatch` returns the same mock created by a `jest.fn()` or `vi.fn()` and returned as a member of `mockReactRedux()`
 - `connect` mimicks `react-redux` but using the above mock logic
 
 ## Should I Mock State or Mock Selectors?

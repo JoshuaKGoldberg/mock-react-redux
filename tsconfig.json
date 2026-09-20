@@ -4,10 +4,17 @@
     "esModuleInterop": true,
     "jsx": "react",
     "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "paths": {
+      "mock-react-redux": ["./src/index.ts"],
+      "mock-react-redux/jest": ["./src/jest.ts"],
+      "mock-react-redux/vitest": ["./src/vitest.ts"]
+    },
     "skipLibCheck": true,
     "strict": true,
     "target": "es2017"

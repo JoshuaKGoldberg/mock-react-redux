@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import { mockReactRedux } from "mock-react-redux";
 import * as React from "react";
 import { useSelector } from "react-redux";
+import { describe, it } from "vitest";
 
 type RootState = {
   title: string;

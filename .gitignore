@@ -5,4 +5,4 @@ node_modules/
 **/*.d.ts
 !*.config.js
 !.eslintrc.js
-!docs/examples/types.d.ts
+lib/

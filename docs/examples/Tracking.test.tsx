@@ -2,6 +2,7 @@ import { render, fireEvent } from "@testing-library/react";
 import { mockReactRedux } from "mock-react-redux";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { describe, expect, it } from "vitest";
 
 type RootState = {
   clicks: number;

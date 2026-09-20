@@ -2,6 +2,7 @@ import { render, fireEvent } from "@testing-library/react";
 import { mockReactRedux } from "mock-react-redux";
 import * as React from "react";
 import { useDispatch } from "react-redux";
+import { describe, expect, it } from "vitest";
 
 const MARK_CLICKED = "MARK_CLICKED";
 

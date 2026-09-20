@@ -1,12 +1,13 @@
 import mapValues from "lodash.mapvalues";
 import * as React from "react";
 import type { MapStateToProps, MapDispatchToProps } from "react-redux";
+import { AnyMockFunction } from "./types";
 
 type AnyAction = (payload: any) => void;
 
 const defaultMergeProps = (...sources: unknown[]) => Object.assign({}, ...sources);
 
-export function mockConnect<State>(getDispatch: () => jest.Mock, getState: () => State) {
+export function mockConnect<State>(getDispatch: () => AnyMockFunction, getState: () => State) {
   return function <OwnProps, StateProps, DispatchProps extends Record<string, AnyAction>>(
     mapStateToProps?: MapStateToProps<StateProps, OwnProps, State>,
     mapDispatchToProps?: MapDispatchToProps<DispatchProps, OwnProps>,

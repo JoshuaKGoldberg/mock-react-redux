@@ -1,7 +1,10 @@
 {
   "moduleFileExtensions": ["tsx", "ts", "js"],
   "moduleNameMapper": {
-    "^mock-react-redux$": "<rootDir>/src/index"
+    "^mock-react-redux$": "<rootDir>/src/index",
+    "^mock-react-redux/jest$": "<rootDir>/src/jest",
+    "^vitest$": "<rootDir>/src/tests/vitestShim"
   },
+  "testPathIgnorePatterns": ["/node_modules/", "<rootDir>/src/tests/vitest/"],
   "testRegex": ["\\.test\\.tsx?$"]
 }

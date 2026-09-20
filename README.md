@@ -4,7 +4,7 @@
 ![TypeScript: Strict](https://img.shields.io/badge/typescript-strict-brightgreen.svg)
 [![NPM version](https://badge.fury.io/js/mock-react-redux.svg)](http://badge.fury.io/js/mock-react-redux)
 
-Mocks out Redux actions and selectors for clean React Jest tests.
+Mocks out Redux actions and selectors for clean React Jest and Vitest tests.
 
 Tired of setting up, updating, and debugging through complex _Redux_ states in your _React_ tests?
 Use this package if you'd like your React component tests to not take dependencies on your full Redux store.
@@ -19,6 +19,9 @@ import { mockReactRedux } from "mock-react-redux";
 
 `mock-react-redux` stubs out [`connect`](https://react-redux.js.org/api/connect) and the [two common Redux hooks](https://react-redux.js.org/api/hooks) used with React components.
 Call `mockReactRedux()` before your render/mount logic in each test.
+
+It works with both [Jest](https://jestjs.io) and [Vitest](https://vitest.dev), and detects which one is running.
+See [Test Runners](#test-runners) for details.
 
 ### Mocking State
 
@@ -50,11 +53,11 @@ See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/
 ```tsx
 mockReactRedux()
   .give(valueSelector, "Hooray!")
-  .giveMock(fancySelector, jest.fn().mockReturnValueOnce("Just the once."));
+  .giveMock(fancySelector, vi.fn().mockReturnValueOnce("Just the once."));
 ```
 
 Provide results to the [`useSelector`](https://react-redux.js.org/api/hooks#useselector) function for individual selectors passed to it.
-These work similarly to Jest mocks: `.give` takes in the return value that will always be passed to the selector.
+These work similarly to mock functions: `.give` takes in the return value that will always be passed to the selector.
 
 ```tsx
 it("displays the title when there is a title", () => {
@@ -67,7 +70,7 @@ it("displays the title when there is a title", () => {
 });
 ```
 
-If you'd like more control over the return values, you can use `.giveMock` to provide a [Jest mock](https://jestjs.io/docs/en/mock-functions.html).
+If you'd like more control over the return values, you can use `.giveMock` to provide a mock function such as [`jest.fn()`](https://jestjs.io/docs/en/mock-functions.html) or [`vi.fn()`](https://vitest.dev/api/vi.html#vi-fn).
 
 See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/examples/Heading.test.tsx) for a code example.
 
@@ -77,8 +80,8 @@ See [Selectors](./docs/Selectors.md) for more documentation or [Heading](./docs/
 const { dispatch } = mockReactRedux();
 ```
 
-The `dispatch` function returned by [`useDispatch`](https://react-redux.js.org/api/hooks#usedispatch) will be replaced by a `jest.fn()` spy.
-You can then assert against it as with any Jest mock in your tests:
+The `dispatch` function returned by [`useDispatch`](https://react-redux.js.org/api/hooks#usedispatch) will be replaced by a `jest.fn()` or `vi.fn()` spy.
+You can then assert against it as with any mock function in your tests:
 
 ```tsx
 it("dispatches the pageLoaded action when rendered", () => {
@@ -93,9 +96,31 @@ it("dispatches the pageLoaded action when rendered", () => {
 
 See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./docs/examples/Clicker.test.tsx) for a code example.
 
+## Test Runners
+
+`mock-react-redux` supports [Jest](https://jestjs.io) and [Vitest](https://vitest.dev).
+The default `mock-react-redux` import detects which test runner is active and uses its module mocking and mock functions.
+
+If you'd prefer to be explicit, or want `dispatch` typed as your runner's own mock type (`jest.Mock` or Vitest's `Mock`) instead of the shared `MockFunction` type, import from the runner-specific entry point:
+
+```ts
+import { mockReactRedux } from "mock-react-redux/jest";
+```
+
+```ts
+import { mockReactRedux } from "mock-react-redux/vitest";
+```
+
+### Vitest Setup Files
+
+Importing `mock-react-redux` from a Vitest [setup file](https://vitest.dev/config/#setupfiles) mocks `react-redux` for _every_ test file, which removes the import order gotcha below.
+Only do that if no test files in your project need the real `react-redux`.
+
 ## Gotchas
 
 - The first `mock-react-redux` import _must_ come before the first `react-redux` import in your test files.
+  - Under Jest, `mockReactRedux()` throws an error if it detects the wrong order.
+    Under Vitest, components silently receive the real `react-redux`.
 - `.give` and `.giveMock` will only apply when selectors are passed directly to `useSelector` (e.g. `useSelector(selectValue)`).
   - See [FAQs](./docs/FAQs.md#help-my-give-selectors-arent-getting-mocked) for more tips and tricks.
 - Thunks often create new functions per dispatch that make `toBeCalledWith`-style checks difficult. See [the Thunks docs](./docs/Thunks.md) for details.
@@ -103,7 +128,7 @@ See [Dispatches](./docs/Dispatches.md) for more documentation or [Clicker](./doc
 ### Hybrid Usage
 
 You don't have to use `mock-react-redux` in _every_ test file in your repository.
-Only the test files that import `mock-react-redux` will have `react-redux` stubbed out.
+Only the test files that import `mock-react-redux` will have `react-redux` stubbed out (unless you import it from a Vitest setup file).
 
 ### TypeScript Usage
 
@@ -119,7 +144,7 @@ _Heck yes._ 🤘
 
 Requires:
 
-- [Node.js](https://nodejs.org) >12
+- [Node.js](https://nodejs.org) >=22.12
 - [Yarn](https://yarnpkg.com/en)
 
 After [forking the repo from GitHub](https://help.github.com/articles/fork-a-repo):

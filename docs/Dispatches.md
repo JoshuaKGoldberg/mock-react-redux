@@ -80,7 +80,7 @@ You're also relying a bunch of Redux state in order to test your React view.
 It can be useful to separate view and state logic in tests: especially when state is shared across many places.
 
 Instead, `mock-react-redux` can _completely replace_ any Redux interactions.
-It'll instead swap out the `dispatch` function with a [Jest mock](https://jestjs.io/docs/en/mock-functions.html):
+It'll instead swap out the `dispatch` function with a mock function:
 
 ```tsx
 const { dispatch } = mockReactRedux();
@@ -98,10 +98,10 @@ Much cleaner!
 
 ## `dispatch`
 
-The `dispatch` returned to your views is directly the result of calling [`jest.fn()`](https://jestjs.io/docs/en/mock-functions.html).
+The `dispatch` returned to your views is directly the result of calling your test runner's mock function creator: [`jest.fn()`](https://jestjs.io/docs/en/mock-functions.html) under Jest, or [`vi.fn()`](https://vitest.dev/api/vi.html#vi-fn) under Vitest.
 It'll receive any actions passed to it as normal function parameters.
 
-If you'd like to execute some logic when actions are dispatched, you can use Jest's built-in logic for [mock implementations](https://jestjs.io/docs/en/mock-functions.html#mock-implementations):
+If you'd like to execute some logic when actions are dispatched, you can use your runner's built-in logic for [mock implementations](https://jestjs.io/docs/en/mock-functions.html#mock-implementations):
 
 ```tsx
 dispatch.mockImplementation((action) => {

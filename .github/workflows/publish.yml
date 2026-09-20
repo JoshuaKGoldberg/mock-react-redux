@@ -7,6 +7,7 @@ jobs:
       - uses: Codecademy/run-on-yarn@v1
         with:
           command: compile
+          node-version: 22
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}

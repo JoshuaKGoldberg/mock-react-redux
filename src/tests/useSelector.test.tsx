@@ -1,5 +1,6 @@
 import { mockReactRedux } from "mock-react-redux";
 import { useSelector } from "react-redux";
+import { describe, expect, it, vi } from "vitest";
 
 type TestState = {
   value: string;
@@ -89,7 +90,7 @@ describe("useSelector", () => {
 
       mockReactRedux().giveMock(
         selectTestValue,
-        jest.fn(() => testValue),
+        vi.fn(() => testValue),
       );
 
       const result = useSelector(selectTestValue);
@@ -103,7 +104,7 @@ describe("useSelector", () => {
       mockReactRedux()
         .giveMock(
           selectTestValue,
-          jest.fn(() => testValue),
+          vi.fn(() => testValue),
         )
         .state({ value: "Something else!?" });
 
@@ -117,10 +118,10 @@ describe("useSelector", () => {
 
       giveMock(
         selectTestValue,
-        jest.fn(() => ""),
+        vi.fn(() => ""),
       );
 
-      expect(() => giveMock(selectTestValue, jest.fn())).toThrowError(
+      expect(() => giveMock(selectTestValue, vi.fn())).toThrowError(
         "Attempted to provide a second mock for 'selectTestValue'",
       );
     });

@@ -1,6 +1,11 @@
 {
   "author": "Codecademy",
-  "description": "Mocks out Redux actions and selectors for clean React Jest tests.",
+  "dependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-redux": "^7.1.9",
+    "lodash.mapvalues": "^4.6.0"
+  },
+  "description": "Mocks out Redux actions and selectors for clean React Jest and Vitest tests.",
   "devDependencies": {
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
@@ -8,6 +13,7 @@
     "@testing-library/react": "^10.0.4",
     "@types/jest": "^25.2.3",
     "@types/lodash.mapvalues": "^4.6.6",
+    "@types/node": "^26.6.2",
     "@types/redux-mock-store": "^1.0.2",
     "@types/testing-library__react": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "3.0.0",
@@ -17,15 +23,42 @@
     "eslint-config-prettier": "^6.11.0",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
+    "jsdom": "^30.1.0",
     "lint-staged": "^10.2.6",
     "lodash": "^4.17.21",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
-    "typescript": "^3.9.3"
+    "tsup": "^8.5.1",
+    "typescript": "^5",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1"
   },
-  "main": "src/index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./jest": {
+      "types": "./lib/jest.d.ts",
+      "default": "./lib/jest.js"
+    },
+    "./vitest": {
+      "types": "./lib/vitest.d.mts",
+      "default": "./lib/vitest.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/",
+    "package.json",
+    "LICENSE.md",
+    "README.md"
+  ],
   "homepage": "https://github.com/Codecademy/mock-react-redux#readme",
   "husky": {
     "hooks": {
@@ -35,12 +68,13 @@
   "keywords": [
     "mock",
     "redux",
-    "jest",
     "tests",
     "spies",
     "dispatch",
     "selectors",
-    "hooks"
+    "hooks",
+    "jest",
+    "vitest"
   ],
   "license": "MIT",
   "lint-staged": {
@@ -48,25 +82,31 @@
       "prettier --write"
     ]
   },
+  "main": "./lib/index.js",
   "name": "mock-react-redux",
+  "peerDependencies": {
+    "vitest": ">=1"
+  },
+  "peerDependenciesMeta": {
+    "vitest": {
+      "optional": true
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Codecademy/mock-react-redux.git"
   },
   "scripts": {
-    "compile": "tsc --module commonjs",
+    "compile": "tsup",
     "format": "yarn prettier --write",
     "format:verify": "yarn prettier --list-different \"**/*.{js,json,md,ts,yml}\"",
     "format:write-all": "yarn format:verify --write",
     "lint": "eslint \"./src/*.ts\" \"./src/**/*.ts\" --report-unused-disable-directives",
-    "test": "jest",
-    "test:ci": "jest --maxWorkers=2"
+    "test": "vitest run",
+    "test:ci": "vitest run",
+    "test:jest": "jest",
+    "typecheck": "tsc"
   },
-  "types": "src/index.d.ts",
-  "version": "0.4.0",
-  "dependencies": {
-    "@types/react": "^16.9.35",
-    "@types/react-redux": "^7.1.9",
-    "lodash.mapvalues": "^4.6.0"
-  }
+  "types": "./lib/index.d.ts",
+  "version": "0.4.0"
 }
